@@ -15,4 +15,12 @@ add_executable(Practica6 main.cpp
         Stock.cpp
         Stock.h
         ThashMedicam.cpp
-        ThashMedicam.h)
+        ThashMedicam.h
+        MallaRegular.cpp
+        MallaRegular.h
+        Casilla.cpp
+        Casilla.h
+        Usuario.cpp
+        Usuario.h
+        UTM.cpp
+        UTM.h)

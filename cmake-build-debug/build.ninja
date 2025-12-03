@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = D$:/Practica6/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target Practica6
 
@@ -49,54 +49,183 @@ cmake_ninja_workdir = D$:/Practica6/cmake-build-debug/
 
 build cmake_object_order_depends_target_Practica6: phony || .
 
-build CMakeFiles/Practica6.dir/main.cpp.obj: CXX_COMPILER__Practica6_unscanned_Debug D$:/Practica6/main.cpp || cmake_object_order_depends_target_Practica6
+build CMakeFiles/Practica6.dir/main.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/main.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\main.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\main.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\main.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\main.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/main.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/main.cpp | CMakeFiles/Practica6.dir/main.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
   CONFIG = Debug
   DEP_FILE = CMakeFiles\Practica6.dir\main.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\main.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Practica6.dir
   OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
 
-build CMakeFiles/Practica6.dir/MediExpress.cpp.obj: CXX_COMPILER__Practica6_unscanned_Debug D$:/Practica6/MediExpress.cpp || cmake_object_order_depends_target_Practica6
+build CMakeFiles/Practica6.dir/MediExpress.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/MediExpress.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\MediExpress.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\MediExpress.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\MediExpress.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\MediExpress.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/MediExpress.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/MediExpress.cpp | CMakeFiles/Practica6.dir/MediExpress.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
   CONFIG = Debug
   DEP_FILE = CMakeFiles\Practica6.dir\MediExpress.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\MediExpress.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Practica6.dir
   OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
 
-build CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj: CXX_COMPILER__Practica6_unscanned_Debug D$:/Practica6/PaMedicamento.cpp || cmake_object_order_depends_target_Practica6
+build CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/PaMedicamento.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\PaMedicamento.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\PaMedicamento.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\PaMedicamento.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\PaMedicamento.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/PaMedicamento.cpp | CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
   CONFIG = Debug
   DEP_FILE = CMakeFiles\Practica6.dir\PaMedicamento.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\PaMedicamento.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Practica6.dir
   OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
 
-build CMakeFiles/Practica6.dir/Laboratorio.cpp.obj: CXX_COMPILER__Practica6_unscanned_Debug D$:/Practica6/Laboratorio.cpp || cmake_object_order_depends_target_Practica6
+build CMakeFiles/Practica6.dir/Laboratorio.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Laboratorio.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\Laboratorio.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\Laboratorio.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\Laboratorio.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\Laboratorio.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/Laboratorio.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Laboratorio.cpp | CMakeFiles/Practica6.dir/Laboratorio.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
   CONFIG = Debug
   DEP_FILE = CMakeFiles\Practica6.dir\Laboratorio.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\Laboratorio.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Practica6.dir
   OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
 
-build CMakeFiles/Practica6.dir/Farmacia.cpp.obj: CXX_COMPILER__Practica6_unscanned_Debug D$:/Practica6/Farmacia.cpp || cmake_object_order_depends_target_Practica6
+build CMakeFiles/Practica6.dir/Farmacia.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Farmacia.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\Farmacia.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\Farmacia.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\Farmacia.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\Farmacia.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/Farmacia.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Farmacia.cpp | CMakeFiles/Practica6.dir/Farmacia.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
   CONFIG = Debug
   DEP_FILE = CMakeFiles\Practica6.dir\Farmacia.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\Farmacia.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Practica6.dir
   OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
 
-build CMakeFiles/Practica6.dir/Stock.cpp.obj: CXX_COMPILER__Practica6_unscanned_Debug D$:/Practica6/Stock.cpp || cmake_object_order_depends_target_Practica6
+build CMakeFiles/Practica6.dir/Stock.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Stock.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\Stock.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\Stock.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\Stock.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\Stock.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/Stock.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Stock.cpp | CMakeFiles/Practica6.dir/Stock.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
   CONFIG = Debug
   DEP_FILE = CMakeFiles\Practica6.dir\Stock.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\Stock.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Practica6.dir
   OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
 
-build CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj: CXX_COMPILER__Practica6_unscanned_Debug D$:/Practica6/ThashMedicam.cpp || cmake_object_order_depends_target_Practica6
+build CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/ThashMedicam.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\ThashMedicam.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\ThashMedicam.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\ThashMedicam.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\ThashMedicam.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/ThashMedicam.cpp | CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
   CONFIG = Debug
   DEP_FILE = CMakeFiles\Practica6.dir\ThashMedicam.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\ThashMedicam.cpp.obj.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Practica6.dir
   OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
+
+build CMakeFiles/Practica6.dir/MallaRegular.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/MallaRegular.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\MallaRegular.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\MallaRegular.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\MallaRegular.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\MallaRegular.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/MallaRegular.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/MallaRegular.cpp | CMakeFiles/Practica6.dir/MallaRegular.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\Practica6.dir\MallaRegular.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\MallaRegular.cpp.obj.modmap
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Practica6.dir
+  OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
+
+build CMakeFiles/Practica6.dir/Casilla.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Casilla.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\Casilla.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\Casilla.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\Casilla.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\Casilla.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/Casilla.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Casilla.cpp | CMakeFiles/Practica6.dir/Casilla.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\Practica6.dir\Casilla.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\Casilla.cpp.obj.modmap
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Practica6.dir
+  OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
+
+build CMakeFiles/Practica6.dir/Usuario.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Usuario.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\Usuario.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\Usuario.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\Usuario.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\Usuario.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/Usuario.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/Usuario.cpp | CMakeFiles/Practica6.dir/Usuario.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\Practica6.dir\Usuario.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\Usuario.cpp.obj.modmap
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Practica6.dir
+  OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
+
+build CMakeFiles/Practica6.dir/UTM.cpp.obj.ddi: CXX_SCAN__Practica6_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/UTM.cpp || cmake_object_order_depends_target_Practica6
+  DEP_FILE = CMakeFiles\Practica6.dir\UTM.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\Practica6.dir\UTM.cpp.obj.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJ_FILE = CMakeFiles\Practica6.dir\UTM.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\Practica6.dir\UTM.cpp.obj.ddi.i
+
+build CMakeFiles/Practica6.dir/UTM.cpp.obj: CXX_COMPILER__Practica6_scanned_Debug C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/UTM.cpp | CMakeFiles/Practica6.dir/UTM.cpp.obj.modmap || cmake_object_order_depends_target_Practica6 CMakeFiles/Practica6.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\Practica6.dir\UTM.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\Practica6.dir\UTM.cpp.obj.modmap
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Practica6.dir
+  OBJECT_FILE_DIR = CMakeFiles\Practica6.dir
+  dyndep = CMakeFiles/Practica6.dir/CXX.dd
+
+build CMakeFiles/Practica6.dir/CXX.dd | C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/cmake-build-debug/CMakeFiles/Practica6.dir/CXXModules.json CMakeFiles/Practica6.dir/main.cpp.obj.modmap CMakeFiles/Practica6.dir/MediExpress.cpp.obj.modmap CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj.modmap CMakeFiles/Practica6.dir/Laboratorio.cpp.obj.modmap CMakeFiles/Practica6.dir/Farmacia.cpp.obj.modmap CMakeFiles/Practica6.dir/Stock.cpp.obj.modmap CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj.modmap CMakeFiles/Practica6.dir/MallaRegular.cpp.obj.modmap CMakeFiles/Practica6.dir/Casilla.cpp.obj.modmap CMakeFiles/Practica6.dir/Usuario.cpp.obj.modmap CMakeFiles/Practica6.dir/UTM.cpp.obj.modmap: CXX_DYNDEP__Practica6_Debug CMakeFiles/Practica6.dir/main.cpp.obj.ddi CMakeFiles/Practica6.dir/MediExpress.cpp.obj.ddi CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj.ddi CMakeFiles/Practica6.dir/Laboratorio.cpp.obj.ddi CMakeFiles/Practica6.dir/Farmacia.cpp.obj.ddi CMakeFiles/Practica6.dir/Stock.cpp.obj.ddi CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj.ddi CMakeFiles/Practica6.dir/MallaRegular.cpp.obj.ddi CMakeFiles/Practica6.dir/Casilla.cpp.obj.ddi CMakeFiles/Practica6.dir/Usuario.cpp.obj.ddi CMakeFiles/Practica6.dir/UTM.cpp.obj.ddi | C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/cmake-build-debug/CMakeFiles/Practica6.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -106,7 +235,7 @@ build CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj: CXX_COMPILER__Practica6_uns
 #############################################
 # Link the executable Practica6.exe
 
-build Practica6.exe: CXX_EXECUTABLE_LINKER__Practica6_Debug CMakeFiles/Practica6.dir/main.cpp.obj CMakeFiles/Practica6.dir/MediExpress.cpp.obj CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj CMakeFiles/Practica6.dir/Laboratorio.cpp.obj CMakeFiles/Practica6.dir/Farmacia.cpp.obj CMakeFiles/Practica6.dir/Stock.cpp.obj CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj
+build Practica6.exe: CXX_EXECUTABLE_LINKER__Practica6_Debug CMakeFiles/Practica6.dir/main.cpp.obj CMakeFiles/Practica6.dir/MediExpress.cpp.obj CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj CMakeFiles/Practica6.dir/Laboratorio.cpp.obj CMakeFiles/Practica6.dir/Farmacia.cpp.obj CMakeFiles/Practica6.dir/Stock.cpp.obj CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj CMakeFiles/Practica6.dir/MallaRegular.cpp.obj CMakeFiles/Practica6.dir/Casilla.cpp.obj CMakeFiles/Practica6.dir/Usuario.cpp.obj CMakeFiles/Practica6.dir/UTM.cpp.obj
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -122,7 +251,7 @@ build Practica6.exe: CXX_EXECUTABLE_LINKER__Practica6_Debug CMakeFiles/Practica6
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Practica6\cmake-build-debug && C:\Users\admin\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "C:\Users\pablo\Downloads\Segundo Curso\Estructuras\Practicas\Practica6\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2025.2.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -133,7 +262,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Practica6\cmake-build-debug && C:\Users\admin\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -SD:\Practica6 -BD:\Practica6\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "C:\Users\pablo\Downloads\Segundo Curso\Estructuras\Practicas\Practica6\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2025.2.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\pablo\Downloads\Segundo Curso\Estructuras\Practicas\Practica6" -B"C:\Users\pablo\Downloads\Segundo Curso\Estructuras\Practicas\Practica6\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -151,14 +280,14 @@ build Practica6: phony Practica6.exe
 # =============================================================================
 
 #############################################
-# Folder: D:/Practica6/cmake-build-debug
+# Folder: C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/cmake-build-debug
 
 build codegen: phony
 
 # =============================================================================
 
 #############################################
-# Folder: D:/Practica6/cmake-build-debug
+# Folder: C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/cmake-build-debug
 
 build all: phony Practica6.exe
 
@@ -169,14 +298,14 @@ build all: phony Practica6.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja D$:/Practica6/cmake-build-debug/cmake_install.cmake: RERUN_CMAKE | C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake D$:/Practica6/CMakeLists.txt
+build build.ninja C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/cmake-build-debug/cmake_install.cmake: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Users/admin/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake D$:/Practica6/CMakeLists.txt: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2025.2.1/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/pablo/Downloads/Segundo$ Curso/Estructuras/Practicas/Practica6/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
 
 
 #############################################

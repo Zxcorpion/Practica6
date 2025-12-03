@@ -10,7 +10,7 @@
  * @post Se crea un objeto con los valores asignados por defecto
  */
 MediExpress::MediExpress():
-        idMedication(3310,0.7),labs(),pharmacy(), vMedi(),nombMedication(), listaMeds() {
+        idMedication(3310,0.7),labs(),pharmacy(), vMedi(),nombMedication(), listaMeds(), grid(), users() {
 }
 
 /**
@@ -228,6 +228,9 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     std::string nombre_= "";
     std::string direccionLab_= "";
     std::string codPostal_= "";
+    std::string longitud_= "";
+    std::string latitud_= "";
+    double latitud_num, longitud_num;
 
     std::vector<std::string> vectorCIFS;
 

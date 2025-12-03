@@ -1,0 +1,77 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/cmake-build-debug",
+	"dir-cur-src" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6",
+	"dir-top-bld" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/cmake-build-debug",
+	"dir-top-src" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/cmake-build-debug/CMakeFiles/Practica6.dir",
+	"sources" : 
+	{
+		"CMakeFiles/Practica6.dir/Casilla.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/Casilla.cpp"
+		},
+		"CMakeFiles/Practica6.dir/Farmacia.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/Farmacia.cpp"
+		},
+		"CMakeFiles/Practica6.dir/Laboratorio.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/Laboratorio.cpp"
+		},
+		"CMakeFiles/Practica6.dir/MallaRegular.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/MallaRegular.cpp"
+		},
+		"CMakeFiles/Practica6.dir/MediExpress.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/MediExpress.cpp"
+		},
+		"CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/PaMedicamento.cpp"
+		},
+		"CMakeFiles/Practica6.dir/Stock.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/Stock.cpp"
+		},
+		"CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/ThashMedicam.cpp"
+		},
+		"CMakeFiles/Practica6.dir/UTM.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/UTM.cpp"
+		},
+		"CMakeFiles/Practica6.dir/Usuario.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/Usuario.cpp"
+		},
+		"CMakeFiles/Practica6.dir/main.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/pablo/Downloads/Segundo Curso/Estructuras/Practicas/Practica6/main.cpp"
+		}
+	}
+}

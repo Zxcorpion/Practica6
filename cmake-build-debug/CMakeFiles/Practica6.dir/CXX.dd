@@ -1,0 +1,15 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/Practica6.dir/main.cpp.obj: dyndep
+
+build CMakeFiles/Practica6.dir/MediExpress.cpp.obj: dyndep
+
+build CMakeFiles/Practica6.dir/PaMedicamento.cpp.obj: dyndep
+
+build CMakeFiles/Practica6.dir/Laboratorio.cpp.obj: dyndep
+
+build CMakeFiles/Practica6.dir/Farmacia.cpp.obj: dyndep
+
+build CMakeFiles/Practica6.dir/Stock.cpp.obj: dyndep
+
+build CMakeFiles/Practica6.dir/ThashMedicam.cpp.obj: dyndep
+
