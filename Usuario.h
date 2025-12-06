@@ -12,10 +12,12 @@ class Usuario {
 private:
     int id_= 0;
     std::string provincia_ = "";
-    UTM coord;
+    UTM coord_;
+    MediExpress *linkUser;
     public:
     Usuario(int id = 0, std::string provincia = "", UTM coord = UTM());
     Usuario(const Usuario &orig);
+    ~Usuario();
 
     int get_id() const;
     void set_id(int id);

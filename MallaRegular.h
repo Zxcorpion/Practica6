@@ -36,6 +36,7 @@ public:
     void insertar(float x, float y, const M &dato);
     M *buscar(float x, float y, const M &dato);
     bool borrar(float x, float y, const M &dato);
+    //operator=
 };
 
 

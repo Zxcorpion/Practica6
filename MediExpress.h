@@ -14,6 +14,8 @@
 #include <list>
 #include "Farmacia.h"
 #include "ThashMedicam.h"
+#include "Usuario.h"
+#include "MallaRegular.h"
 
 
 /**
@@ -27,10 +29,13 @@ private:
     std::multimap<std::string,Farmacia> pharmacy;
     std::vector<int> vMedi;
     std::list<PaMedicamento> listaMeds;
+    std::map<int,Usuario> users;
+    MallaRegular<Farmacia*> grid;
 public:
     MediExpress();
     MediExpress(const std::string &medicamentos, const std::string &laboratorios,
-                const std::string &farmacias, unsigned long tam, float lambda);
+                const std::string &farmacias, const std::string &usuarios,
+                unsigned long tam, float lambda);
     MediExpress(const MediExpress &orig);
     ~MediExpress();
     MediExpress& operator=(const MediExpress &orig);
@@ -61,5 +66,7 @@ public:
     int get_maxColisiones() const;
     int redispersiones() const;
     //void redispersar(unsigned tam);
+
+    //buscausuario(provincia)
 };
 #endif //MEDIEXPRESS_H

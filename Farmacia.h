@@ -7,6 +7,7 @@
 #include <map>
 #include "Stock.h"
 #include "PaMedicamento.h"
+#include "UTM.h"
 #include <vector>
 
 class MediExpress;
@@ -20,6 +21,7 @@ private:
             nombre_="-",direccion_="-",codPostal_="-";
     MediExpress* linkMedi;
     std::map<unsigned int, Stock> order;
+    UTM pos;
     void pedidoMedicam(const int &id_num,const int &robin);
     void pedidoMedicam(std:: string nombrelol, const int &robin);
 

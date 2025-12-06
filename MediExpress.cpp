@@ -10,7 +10,7 @@
  * @post Se crea un objeto con los valores asignados por defecto
  */
 MediExpress::MediExpress():
-        idMedication(3310,0.7),labs(),pharmacy(), vMedi(),nombMedication(), listaMeds(), grid(), users() {
+        idMedication(3310,0.7),labs(),pharmacy(), vMedi(),nombMedication(), listaMeds(), users(), grid() {
 }
 
 /**
@@ -20,9 +20,10 @@ MediExpress::MediExpress():
  * @post Se crea un objeto de la clase MediExpress con los valores pasados por cabecera, que son leidos de varios ficheros .csv
  */
 MediExpress::MediExpress(const std::string &medicamentos, const std::string &laboratorios,
-                         const std::string &farmacias, unsigned long tam, float lambda):
+                const std::string &farmacias, const std::string &usuarios,
+                unsigned long tam, float lambda):
         idMedication(tam,lambda), vMedi(), labs(), pharmacy(),
-        nombMedication(), listaMeds()
+        nombMedication(), listaMeds(),users(),grid()
 {
     std::ifstream is;
     std::stringstream  columnas;
@@ -230,7 +231,8 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     std::string codPostal_= "";
     std::string longitud_= "";
     std::string latitud_= "";
-    double latitud_num, longitud_num;
+    float latitud_num, longitud_num;
+    //float maxLon=-999999, maxLat
 
     std::vector<std::string> vectorCIFS;
 
@@ -254,8 +256,11 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 getline(columnas, nombre_,';');
                 getline(columnas, direccionLab_,';');
                 getline(columnas, codPostal_,';');
+                //añadir 2 lineas mas
 
+                //comprobaciones de los maximos y minimos para cambiarlos
 
+                UTM utm(latitud_num,longitud_num);
                 Farmacia farmacia_(cif_,provincia_,localidadLab_,nombre_, direccionLab_, codPostal_,this);
                 try {
                     //pharmacy.push_back(farmacia_);
@@ -264,6 +269,10 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 }catch (std::out_of_range &e) {
                     std::cerr<<e.what()<<std::endl;
                 }
+                /*grid = MallaRegular<Farmacia*>(floor(minLat),floor(minLon),
+                    ceil(maxLat),ceil(),505 //puede cambiemos este 505 por otra cosa);
+                    esto modificarlo nosotros
+                    */
 
                 fila="";
                 columnas.str(std::string());
@@ -350,6 +359,8 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
         }
     }
     std::cout<<"Tiempo de busqueda de meds usando una lista: "<<((clock() - t_inicio2)*1000 / (float) CLOCKS_PER_SEC)<<" milisegs"<<std::endl;
+
+    multimap<string,Farmacia>::
 }
 
 /**
