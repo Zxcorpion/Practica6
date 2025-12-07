@@ -256,7 +256,8 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 getline(columnas, nombre_,';');
                 getline(columnas, direccionLab_,';');
                 getline(columnas, codPostal_,';');
-                //añadir 2 lineas mas
+                getline(columnas, longitud_,';');
+                getline(columnas, latitud_,';');
 
                 //comprobaciones de los maximos y minimos para cambiarlos
 
@@ -294,6 +295,76 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
         is.close();
 
         std::cout << "Tiempo de lectura de farmacias: " << ((clock() - t_ini) / (float) CLOCKS_PER_SEC) << " segs." << std::endl;
+    } else {
+        std::cout << "Error de apertura en archivo" << std::endl;
+    }
+    //Lectura del cuarto fichero
+    std::string id_usu_ = "";
+    std::string provincia_Usu_= "";
+    std::string lat_usu= "";
+    std::string long_usu= "";
+
+    is.open(usuarios); //carpeta de proyecto
+    if ( is.good() ) {
+
+        clock_t t_ini = clock();
+
+        while ( getline(is, fila ) ) {
+
+            //¿Se ha leído una nueva fila?
+            if (fila!="") {
+
+                columnas.str(fila);
+
+                //formato de fila: id_number;id_alpha;nombre;
+
+                getline(columnas, id_usu_, ';'); //leemos caracteres hasta encontrar y omitir ';'
+                getline(columnas, provincia_Usu_,';');
+                getline(columnas, lat_usu,';');
+                getline(columnas, long_usu,';');
+
+                int id_usu_num = 0;
+                float lat_num_usu = 0.0;
+                float long_num_usu = 0.0;
+                try {
+                    id_usu_num = std::stoi(id_usu_); ///Esta funcion pasa de string a int
+                    lat_num_usu = std::stof(lat_usu); ///Esta funcion pasa de string a float
+                    long_num_usu = std::stof(long_usu); ///Esta funcion pasa de string a float
+                }catch (std::invalid_argument &e) {
+                    std::cerr<<e.what()<<std::endl;
+                }
+
+
+                UTM utm(lat_num_usu,long_num_usu);
+                Usuario usuarios(id_usu_num, provincia_Usu_, utm,this);
+                try {
+                    //pharmacy.push_back(farmacia_);
+                    users.insert(std::pair<int, Usuario>(id_usu_num,usuarios));
+                }catch (std::out_of_range &e) {
+                    std::cerr<<e.what()<<std::endl;
+                }
+
+
+                fila="";
+                columnas.str(std::string());
+                columnas.clear();
+                columnas.str(fila);
+
+
+                /*
+                std::cout << ++contador
+                          << " Farmacia: ( CIF = " << cif_
+                          << " Provincia = " << provincia_ << " Localidad = " << localidadLab_
+                          << " Nombre = " << nombre_ << " Direccion = " << direccionLab_ << " CodPostal = " << codPostal_
+                          << ")" << std::endl;
+                          */
+
+            }
+        }
+
+        is.close();
+
+        std::cout << "Tiempo de lectura de usuarios: " << ((clock() - t_ini) / (float) CLOCKS_PER_SEC) << " segs." << std::endl;
     } else {
         std::cout << "Error de apertura en archivo" << std::endl;
     }
