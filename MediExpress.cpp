@@ -231,8 +231,7 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     std::string codPostal_= "";
     std::string longitud_= "";
     std::string latitud_= "";
-    float latitud_num, longitud_num;
-    //float maxLon=-999999, maxLat
+    float minLon = -999999, minLat = -999999, maxLon = 999999, maxLat = 999999;
 
     std::vector<std::string> vectorCIFS;
 
@@ -256,13 +255,31 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 getline(columnas, nombre_,';');
                 getline(columnas, direccionLab_,';');
                 getline(columnas, codPostal_,';');
-                getline(columnas, longitud_,';');
                 getline(columnas, latitud_,';');
+                getline(columnas, longitud_,';');
 
+                float latitud_num, longitud_num;
+                try {
+                    latitud_num = std::stof(latitud_); ///Esta funcion pasa de string a float
+                    longitud_num = std::stof(longitud_); ///Esta funcion pasa de string a float
+                }catch (std::invalid_argument &e) {
+                    std::cerr<<e.what()<<std::endl;
+                }
                 //comprobaciones de los maximos y minimos para cambiarlos
+                if (latitud_num > maxLat)
+                    maxLat = latitud_num;
 
-                UTM utm(latitud_num,longitud_num);
-                Farmacia farmacia_(cif_,provincia_,localidadLab_,nombre_, direccionLab_, codPostal_,this);
+                if (latitud_num < minLat)
+                    minLat = latitud_num;
+
+                if (longitud_num > maxLat)
+                    maxLon = latitud_num;
+
+                if (longitud_num < minLat)
+                    minLon = latitud_num;
+
+                UTM utm_farma(latitud_num,longitud_num);
+                Farmacia farmacia_(cif_,provincia_,localidadLab_,nombre_, direccionLab_, codPostal_,utm_farma,this);
                 try {
                     //pharmacy.push_back(farmacia_);
                     pharmacy.insert(std::pair<std::string ,Farmacia>(provincia_,farmacia_));
@@ -431,7 +448,13 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     }
     std::cout<<"Tiempo de busqueda de meds usando una lista: "<<((clock() - t_inicio2)*1000 / (float) CLOCKS_PER_SEC)<<" milisegs"<<std::endl;
 
-    multimap<string,Farmacia>::
+    //Insercion en la malla
+    multimap<string,Farmacia>::iterator itbat_Farma = pharmacy.begin();
+    while (itbat_Farma != pharmacy.end()) {
+        grid.insertar(itbat_Farma->second.get_pos().get_latitud(),
+            itbat_Farma->second.get_pos().get_longitud(), &(itbat_Farma->second));
+        itbat_Farma++;
+    }
 }
 
 /**
