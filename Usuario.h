@@ -13,9 +13,9 @@ private:
     int id_= 0;
     std::string provincia_ = "";
     UTM coord_;
-    MediExpress *linkUser;
+    MediExpress *linkUser_;
     public:
-    Usuario(int id = 0, std::string provincia = "", UTM coord = UTM());
+    Usuario(int id = 0, std::string provincia = "", UTM coord = UTM(),MediExpress *linkUser=0);
     Usuario(const Usuario &orig);
     ~Usuario();
 
@@ -23,8 +23,11 @@ private:
     void set_id(int id);
     std::string get_provincia() const;
     void set_provincia(const std::string &provincia);
+    Usuario& operator=(const Usuario &orig);
 
     std::vector<Farmacia*> getFarmaciaCercanas();
+    std::vector<Farmacia*> quieroMedicam(std::string nombre, Farmacia *farmacia);
+    int comprarMedicam(int num, PaMedicamento *paMed, Farmacia *farmacia);
 };
 
 
