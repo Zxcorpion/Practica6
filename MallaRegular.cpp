@@ -1,3 +1,0 @@
-#include "MallaRegular.h"
-
-
