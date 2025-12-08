@@ -833,10 +833,21 @@ int MediExpress::redispersiones() const {
     return idMedication.get_redisp();
 }
 
-
-// void MediExpress::redispersar(unsigned tam) {
-//     ThashMedicam aux;
-//     for (int i=0; i<idMedication.getNumElem();i++) {
-//
-//     }
-// }
+/**
+ * @brief Funcion que nos da un vector con todas las personas de una provincia
+ * @param nombreProvin Nombre de la provincia sobre la que se busca
+ * @return Vector con todos los usuarios de una provincia
+ */
+std::vector<Usuario*> MediExpress::buscar_Usu_Provincia(const std::string &nombreProvin) {
+    //Creo el vector resultante
+    std::vector<Usuario*> arkham_resultado;
+    //Uso un iterador para recorrer el multimapa
+    std::multimap<int,Usuario>::iterator it_Usus = users.begin();
+    while (it_Usus != users.end()) {
+        if (it_Usus->second.get_provincia() == "Jaen") {
+            arkham_resultado.push_back(&it_Usus->second);
+        }
+        it_Usus++;
+    }
+    return arkham_resultado;
+}

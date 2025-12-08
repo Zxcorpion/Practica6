@@ -40,9 +40,6 @@ public:
     ~MediExpress();
     MediExpress& operator=(const MediExpress &orig);
 
-    void set_medication(const std::map<int,PaMedicamento> &medication);
-    void set_labs(const std::list<Laboratorio> &labs);
-
     void suministrarMed(PaMedicamento *pa,Laboratorio *l);
     Laboratorio *buscarLab(const std::string &nombreLab);
     std::list<Laboratorio*> buscarLabs(const std::string &nombrePA);
@@ -55,6 +52,7 @@ public:
     Farmacia* buscaFarmacia(const std::string &cif_);
     bool eliminarMedicamento(const unsigned int &id_num);
     std::vector<Farmacia*> buscar_Farmacia_Provincia(const std::string &nombreProvin);
+    std::vector<Usuario*> buscar_Usu_Provincia(const std::string &nombreProvin);
 
     void mostrarEstado();
     void pruebaRend();
