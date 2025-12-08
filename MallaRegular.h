@@ -7,9 +7,10 @@
 #include <vector>
 
 using namespace std;
-//No hace falta cpp de la malla
+
 template<typename M>
 class MallaRegular;
+
 template<typename C>
  class Casilla{
     list<C> puntos;
@@ -50,24 +51,34 @@ public:
         }
         return false;
     }
+
+    /**
+     * @brief Getter del tamaño de casilla
+     * @return Devuelve el tamaño de la casilla
+     */
+    int get_tamanio(){ return puntos.size(); }
 };
 
 template<typename M>
  class MallaRegular {
     float xMin, yMin, xMax, yMax; // Tamaño real global
     float tamaCasillaX, tamaCasillaY; // Tamaño real de cada casilla
-    vector<vector<Casilla<M> > > mr; // Vector 2D de casillas
+    vector<vector <Casilla<M> > > mallaReg_; // Vector 2D de casillas
+    int tamal_, nDivis_;
 
     Casilla<M> *obtenerCasilla(float x, float y);
+    float distancia_puntos(const float x1, const float y1, const float x2, const float y2);
 public:
-    MallaRegular(float aXMin=0, float aYMin=0, float aXMax=0, float aYMax=0, int aNDiv=0);
+    MallaRegular(float aXMin=0, float aYMin=0, float aXMax=0, float aYMax=0, int nDivis=0);
+    MallaRegular(const MallaRegular<M> &orig);
+    ~MallaRegular(){}
 
     void insertar(float x, float y, const M &dato);
     M *buscar(float x, float y, const M &dato);
     bool borrar(float x, float y, const M &dato);
-    ~MallaRegular(){};
     //operator=
     //Añadido
+    int numElem();
     vector<M>* buscarCercana(float xcentro, float ycentro, int n=1);
     unsigned maxElementosPorCelda();
     float promedioElementosPorCelda();
@@ -83,12 +94,23 @@ public:
  */
 template<typename M>
 MallaRegular<M>::MallaRegular(float aXMin, float aYMin, float aXMax, float aYMax, int aNDiv):
-xMin(aXMin), yMin(aYMin), xMax(aXMax), yMax(aYMax)
+xMin(aXMin), yMin(aYMin), xMax(aXMax), yMax(aYMax),tamal_(0),nDivis_(aNDiv)
 {
     tamaCasillaX = (xMax - xMin)/aNDiv;
     tamaCasillaY = (yMax - yMin)/aNDiv;
-    mr.insert(mr.begin(), aNDiv, vector<Casilla<M> >(aNDiv));
+    mallaReg_.insert(mallaReg_.begin(), aNDiv, vector<Casilla<M> >(aNDiv));
 }
+
+/**
+ * @brief Constructor de copia
+ * @param orig Malla que se copia
+ */
+template<typename M>
+MallaRegular<M>::MallaRegular(const MallaRegular<M> &orig):
+xMin(orig.xMin), yMin(orig.yMin), xMax(orig.xMax), yMax(orig.yMax),
+tamal_(orig.tamal_), nDivis_(orig.nDivis_), mallaReg_(orig.mallaReg_)
+{}
+
 
 /**
  * @brief Funcion para obtener una casilla
@@ -100,7 +122,7 @@ template<typename M>
 Casilla<M>* MallaRegular<M>::obtenerCasilla(float x, float y) {
     int i = (x - xMin) / tamaCasillaX;
     int j = (y - yMin) / tamaCasillaY;
-    return &mr[i][j];
+    return &mallaReg_[i][j];
 }
 
 /**
@@ -140,6 +162,21 @@ bool MallaRegular<M>::borrar(float x, float y, const M &dato) {
     Casilla<M> *c = obtenerCasilla(x,y);
     return c->borrar(dato);
 }
+
+/**
+ * @brief Funcion que calcula la distancia entre dos puntos
+ * @param x1 Latitud del punto 1
+ * @param y1 Longitud del punto 1
+ * @param x2 Latitud del punto 2
+ * @param y2 Longitud del punto 2
+ * @return Distancia entre dos puntos
+ */
+template<typename M>
+float MallaRegular<M>::distancia_puntos(const float x1, const float y1, const float x2, const float y2) {
+    float distancia = sqrt(pow(x1-x2,2)+pow(y1-y2,2));
+    return distancia;
+}
+
 //Dudoso
 template<typename M>
 vector<M> *MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
@@ -152,7 +189,7 @@ vector<M> *MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
     for (int i = batcolumna-n; i <= batcolumna+n; ++i) {
         for (int j = batfila-n; j <= batfila+n; ++j) {
             //Auxiliar para guardar la casilla
-            Casilla<M> &robinaux = mr[i][j];
+            Casilla<M> &robinaux = mallaReg_[i][j];
 
             typename list<M>::iterator it=it = robinaux.puntos.begin();
             for (;it != robinaux.puntos.end(); ++it) {
@@ -171,13 +208,13 @@ vector<M> *MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
  */
 template<typename M>
 unsigned MallaRegular<M>::maxElementosPorCelda() {
-    //Declaramos una axuliar para guardar el maxElementos
+    //Declaramos una auxiliar para guardar el maxElementos
     int batimax=-999999;
     //Usamos dos bucles como si fuera una matriz
-    for(int i=0;i<mr.size();i++) {
-        for (int j=0;j<mr[i].size();j++) {
-            if (mr[i][j].puntos.size() > batimax) {
-                batimax=mr[i][j].puntos.size();
+    for(int i=0;i<mallaReg_.size();i++) {
+        for (int j=0;j<mallaReg_[i].size();j++) {
+            if (mallaReg_[i][j].puntos.size() > batimax) {
+                batimax=mallaReg_[i][j].puntos.size();
             }
         }
     }
@@ -188,13 +225,13 @@ unsigned MallaRegular<M>::maxElementosPorCelda() {
 template<typename M>
 float MallaRegular<M>::promedioElementosPorCelda() {
     float absolute_promedio=0;
-    for(int i=0;i<mr.size();i++) {
-        for (int j=0;j<mr[i].size();j++) {
-            absolute_promedio+=mr[i][j].puntos.size();
+    for(int i=0;i<mallaReg_.size();i++) {
+        for (int j=0;j<mallaReg_[i].size();j++) {
+            absolute_promedio+=mallaReg_[i][j].puntos.size();
         }
     }
     //Calculamos correctamente el promedio y lo devolvemos
-    return absolute_promedio/mr.size();
+    return absolute_promedio/mallaReg_.size();
 }
 
 
