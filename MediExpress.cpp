@@ -851,3 +851,9 @@ std::vector<Usuario*> MediExpress::buscar_Usu_Provincia(const std::string &nombr
     }
     return arkham_resultado;
 }
+
+std::vector<Farmacia *> MediExpress::buscarFarmacias(UTM posicion, int n) {
+    std::vector<Farmacia *> arkham_resultado;
+    arkham_resultado=grid.buscarCercana(posicion.get_longitud(),posicion.get_latitud(),n);
+    return arkham_resultado;
+}
