@@ -79,7 +79,7 @@ public:
     //operator=
     //Añadido
     int numElem();
-    vector<M>* buscarCercana(float xcentro, float ycentro, int n=1);
+    vector<M> buscarCercana(float xcentro, float ycentro, int n=1);
     unsigned maxElementosPorCelda();
     float promedioElementosPorCelda();
 };
@@ -179,9 +179,9 @@ float MallaRegular<M>::distancia_puntos(const float x1, const float y1, const fl
 
 //Dudoso
 template<typename M>
-vector<M> *MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
+vector<M> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
     // 1. Creamos el vector dinámico que vamos a devolver
-    vector<M> *cercanos = new vector<M>();
+    std::vector<M> *cercanos;
     // 2. Calculamos y suponemos que no nos estan pasandon datos incorrectos. Se podria cambiar
     int batcolumna = (xcentro - xMin) / tamaCasillaX;
     int batfila = (ycentro - yMin) / tamaCasillaY;
@@ -191,15 +191,20 @@ vector<M> *MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
             //Auxiliar para guardar la casilla
             Casilla<M> &robinaux = mallaReg_[i][j];
 
-            typename list<M>::iterator it=it = robinaux.puntos.begin();
+            typename list<M>::iterator it = it = robinaux.puntos.begin();
             for (;it != robinaux.puntos.end(); ++it) {
                 // Añadimos cada punto al vector de resultados
                 cercanos->push_back(*it);
             }
         }
     }
+    //cogemos las n farmacias
+    vector<M> resultado;
+    for (int i = 0; i < n; ++i) {
+        resultado.push_back(*cercanos[i]);
+    }
 
-    return cercanos;
+    return resultado;
 }
 
 /**
