@@ -21,14 +21,13 @@ private:
             nombre_="-",direccion_="-",codPostal_="-";
     MediExpress* linkMedi;
     std::map<unsigned int, Stock> order;
-    UTM pos_;
+    UTM pos;
     void pedidoMedicam(const int &id_num,const int &robin);
     void pedidoMedicam(std:: string nombrelol, const int &robin);
 
 public:
     Farmacia(std::string cif="-",std::string provincia="-",std::string localidad="-",
-             std::string nombre="-",std::string direccion="-",std::string codPostal="-",
-             UTM pos = UTM(),MediExpress *link=0);
+             std::string nombre="-",std::string direccion="-",std::string codPostal="-", MediExpress *link=0);
     Farmacia(const Farmacia &orig);
     virtual ~Farmacia();
 
@@ -45,10 +44,6 @@ public:
     std::string get_cod_postal() const;
     void set_cod_postal(const std::string &cod_postal);
 
-    UTM get_pos() const;
-
-    void set_pos(const UTM &pos);
-
     Farmacia &operator=(const Farmacia& orig);
     bool operator==(const Farmacia &orig) const;
     bool operator<(const Farmacia &orig) const;
@@ -59,6 +54,9 @@ public:
     void nuevoStock(PaMedicamento* batmelatonina,const int &robin);
     bool eliminarStock(const int &id_num);
     int buscaMedicamID(const int &id_num);
+    //Añadido. X es longitud ?
+    float getX() const;
+    float getY() const;
 };
 
 
