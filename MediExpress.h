@@ -66,5 +66,8 @@ public:
     //void redispersar(unsigned tam);
 
     //buscausuario(provincia)
+
+    std::vector<Farmacia*> buscarFarmacias(UTM posicion, int n);
 };
+
 #endif //MEDIEXPRESS_H
