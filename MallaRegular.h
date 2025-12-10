@@ -179,22 +179,37 @@ float MallaRegular<M>::distancia_puntos(const float x1, const float y1, const fl
 
 //Dudoso
 template<typename M>
-vector<M*> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
-    // 1. Creamos el vector dinámico que vamos a devolver
-    vector<M*> cercanos;
-    // 2. Calculamos y suponemos que no nos estan pasandon datos incorrectos. Se podria cambiar
-    int batcolumna = (xcentro - xMin) / tamaCasillaX;
-    int batfila = (ycentro - yMin) / tamaCasillaY;
+vector<M> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
+    // Creamos los vectores donde guardaremos los cercanos y el vector final
+    vector<M> cercanos;
+    std::vector<M> eclipse;//vector final
+    Casilla<M>* finn;//puntero a casilla<M>
 
-    for (int i = batcolumna-n; i <= batcolumna+n; ++i) {
-        for (int j = batfila-n; j <= batfila+n; ++j) {
-            //Auxiliar para guardar la casilla
-            Casilla<M> &robinaux = mallaReg_[i][j];
+    int batiencontrados=0;
+    int batradar=0;
+    while(  batradar < nDivis_ && batiencontrados < n ) {
+        for (float i=xcentro-(tamaCasillaX*batradar); i<xcentro+(tamaCasillaX*batradar); i=i+tamaCasillaX){
+            for (float j=ycentro-(tamaCasillaY*batradar); j<ycentro+(tamaCasillaY*batradar); j=j+tamaCasillaY){
+                if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
+                    finn = obtenerCasilla(i,j);
+                    batiencontrados+=finn->puntos.size();
+                }
+            }
+        }
+        if (n>batiencontrados) {
+            batradar++;
+        }
+    }
 
-            typename list<M>::iterator it=it = robinaux.puntos.begin();
-            for (;it != robinaux.puntos.end(); ++it) {
-                // Añadimos cada punto al vector de resultados
-                cercanos.push_back(&(*it));
+    for (float i=xcentro-(tamaCasillaX*batradar); i<xcentro+(tamaCasillaX*batradar); i=i+tamaCasillaX){
+        for (float j=ycentro-(tamaCasillaY*batradar); j<ycentro+(tamaCasillaY*batradar); j=j+tamaCasillaY){
+            if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
+                finn = obtenerCasilla(i,j);//volvemos a obtener la casilla
+                typename std::list<M>::iterator it = finn->puntos.begin();//Lista para iterar los puntos
+                while(it != finn->puntos.end()) {
+                    cercanos.push_back(*it);
+                    it++;
+                }
             }
         }
     }
@@ -205,14 +220,18 @@ vector<M*> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
             float aux1=distancia_puntos(xcentro,ycentro,cercanos[j]->getX(),cercanos[j]->getY());
             float aux2=distancia_puntos(xcentro,ycentro,cercanos[j+1]->getX(),cercanos[j+1]->getY());
             if(aux1>aux2) {
-                M* temp=cercanos[j];
+                M temp=cercanos[j];
                 cercanos[j]=cercanos[j+1];
                 cercanos[j+1]=temp;
             }
         }
     }
 
-    return cercanos;
+    //Pasamos n elementos cercanos al vector final
+    for (int k = 0; k < n; ++k) {
+        eclipse.push_back(cercanos[k]);
+    }
+    return eclipse;
 }
 
 /**
@@ -246,6 +265,7 @@ float MallaRegular<M>::promedioElementosPorCelda() {
     //Calculamos correctamente el promedio y lo devolvemos
     return absolute_promedio/mallaReg_.size();
 }
+
 
 
 #endif //PRACTICA6_MALLAREGULAR_H
