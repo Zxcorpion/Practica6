@@ -25,9 +25,12 @@ private:
     void set_provincia(const std::string &provincia);
     Usuario& operator=(const Usuario &orig);
 
-    std::vector<Farmacia*> getFarmaciaCercanas();
+    Farmacia* getFarmaciaCercanas(const int num);
     std::vector<Farmacia*> quieroMedicam(std::string nombre, Farmacia *farmacia);
     int comprarMedicam(int num, PaMedicamento *paMed, Farmacia *farmacia);
+
+    float getX() const;
+    float getY() const;
 };
 
 

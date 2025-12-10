@@ -43,3 +43,10 @@ Usuario &Usuario::operator=(const Usuario &orig) {
     }
     return *this;
 }
+
+float Usuario::getX() const {
+    return coord_.get_longitud();
+}
+float Usuario::getY() const {
+    return coord_.get_latitud();
+}

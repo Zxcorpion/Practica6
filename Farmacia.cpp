@@ -13,13 +13,14 @@
  * @post Se crea un objeto Farmacia con los atributos pasados por cabecera
  */
 Farmacia::Farmacia(std::string cif, std::string provincia, std::string localidad,
-                   std::string nombre, std::string direccion, std::string codPostal, MediExpress *link):
+                   std::string nombre, std::string direccion, std::string codPostal,UTM pos, MediExpress *link):
         cif_(cif),
         provincia_(provincia),
         localidad_(localidad),
         nombre_(nombre),
         direccion_(direccion),
         codPostal_(codPostal),
+        pos_(pos),
         linkMedi(link),
         order()
 {
@@ -37,6 +38,7 @@ Farmacia::Farmacia(const Farmacia &orig):
         nombre_(orig.nombre_),
         direccion_(orig.direccion_),
         codPostal_(orig.codPostal_),
+        pos_(orig.pos_),
         linkMedi(orig.linkMedi),
         order(orig.order)
 {}
@@ -133,6 +135,14 @@ void Farmacia::set_cod_postal(const std::string &cod_postal) {
     codPostal_ = cod_postal;
 }
 
+UTM Farmacia::get_pos() const {
+    return pos_;
+}
+
+void Farmacia::set_pos(const UTM &pos) {
+    pos_ = pos;
+}
+
 /**
  * @brief Operador de asignacion de la clase Farmacia
  * @param orig  Objeto que usamos de referencia para asignar valores a nuestro objeto
@@ -147,6 +157,8 @@ Farmacia &Farmacia::operator=(const Farmacia &orig) {
         nombre_ = orig.nombre_;
         direccion_ = orig.direccion_;
         codPostal_ = orig.codPostal_;
+        pos_ = orig.pos_;
+        linkMedi = orig.linkMedi;
     }
     return *this;
 }
@@ -316,8 +328,8 @@ bool Farmacia::eliminarStock(const int &id_num) {
 }
 
 float Farmacia::getX() const {
-    return pos.get_longitud();
+    return pos_.get_longitud();
 }
 float Farmacia::getY() const {
-    return pos.get_latitud();
+    return pos_.get_latitud();
 }

@@ -287,10 +287,8 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 }catch (std::out_of_range &e) {
                     std::cerr<<e.what()<<std::endl;
                 }
-                /*grid = MallaRegular<Farmacia*>(floor(minLat),floor(minLon),
-                    ceil(maxLat),ceil(),505 //puede cambiemos este 505 por otra cosa);
-                    esto modificarlo nosotros
-                    */
+                grid = MallaRegular<Farmacia*>(floor(minLat),floor(minLon),
+                    ceil(maxLat),ceil(maxLon),505);//CAMBIAR
 
                 fila="";
                 columnas.str(std::string());
@@ -852,8 +850,8 @@ std::vector<Usuario*> MediExpress::buscar_Usu_Provincia(const std::string &nombr
     return arkham_resultado;
 }
 
-std::vector<Farmacia *> MediExpress::buscarFarmacias(UTM posicion, int n) {
+std::vector<Farmacia*> MediExpress::buscarFarmacias(UTM posicion, int n) {
     std::vector<Farmacia *> arkham_resultado;
-    arkham_resultado=grid.buscarCercana(posicion.get_longitud(),posicion.get_latitud(),n);
+    arkham_resultado = grid.buscarCercana(posicion.get_latitud(),posicion.get_longitud(),n);
     return arkham_resultado;
 }
