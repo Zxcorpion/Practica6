@@ -34,28 +34,29 @@ void mostrarFarmacia(Farmacia &farma) {
  */
 int main() {
     //Prueba 1
-    //MediExpress medBatman2("../pa_medicamentos.csv","../lab2.csv","../farmacias.csv",3310,0.68);
-    //medBatman2.mostrarEstado();
+
     MediExpress medBatman("../pa_medicamentos.csv","../lab2.csv",
-        "../farmacias-coord.csv","usuarios.csv",3310,0.65);
-    medBatman.mostrarEstado();
+        "../farmacias-coord.csv","../usuarios.csv",3310,0.65);
 
     //PRUEBA 1
-    std::vector<Usuario*> usuarios_Jaen = medBatman.buscar_Usu_Provincia("Jaen");
-    std::vector<Farmacia*> farmas;
+    std::vector<Usuario*> usuarios_Jaen = medBatman.buscar_Usu_Provincia("JAEN");
+    Farmacia *farma_Ubeda;
     for (int i = 0; i < usuarios_Jaen.size(); i++) {
-        usuarios_Jaen[i]->getFarmaciaCercanas(2);
+    std::vector<Farmacia*> farmas;
+        bool bandera = false;
+        farmas = usuarios_Jaen[i]->getFarmaciaCercanas(8);
+        for (int j = 0; j < farmas.size(); i++)
+        if (farmas[i]->get_localidad() == "UBEDA" && bandera == false) {
+            farma_Ubeda = farmas[i];
+            bandera = true;
+        }
     }
 
-/*
-    std::string medicamentos[6]={
-            {"MAGNESIO CLORURO HEXAHIDRATO"},
-            {"CLORURO"},
-            {"ANHIDRO CALCIO CLORURO"},
-            {"LIDOCAINA HIDROCLORURO"},
-            {"MENTA PIPERITA"},
-            {"VIRUS GRIPE"}
-    };
+
+    std::string medicamentos[3]=
+        {"MAGNESIO CLORURO HEXAHIDRATO",
+        "LIDOCAINA HIDROCLORURO",
+        "MENTA PIPERITA"};
     std::vector<std::vector<PaMedicamento*> > vector_Loco(6);
     vector_Loco[0] = medBatman.buscaCompuesto(medicamentos[0]);
     vector_Loco[1] = medBatman.buscaCompuesto(medicamentos[1]);
@@ -63,6 +64,7 @@ int main() {
     vector_Loco[3] = medBatman.buscaCompuesto(medicamentos[3]);
     vector_Loco[4] = medBatman.buscaCompuesto(medicamentos[4]);
     vector_Loco[5] = medBatman.buscaCompuesto(medicamentos[5]);
+    /*
 
     std::cout<<"================================================================================="<<std::endl;
     std::cout<<"\n";
