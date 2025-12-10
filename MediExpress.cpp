@@ -231,7 +231,7 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     std::string codPostal_= "";
     std::string longitud_= "";
     std::string latitud_= "";
-    float minLon = -999999, minLat = -999999, maxLon = 999999, maxLat = 999999;
+    float minLon = 9999999, minLat = 9999999, maxLon = -9999999, maxLat = -9999999;
 
     std::vector<std::string> vectorCIFS;
 
@@ -272,11 +272,11 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 if (latitud_num < minLat)
                     minLat = latitud_num;
 
-                if (longitud_num > maxLat)
-                    maxLon = latitud_num;
+                if (longitud_num > maxLon)
+                    maxLon = longitud_num;
 
-                if (longitud_num < minLat)
-                    minLon = latitud_num;
+                if (longitud_num < minLon)
+                    minLon = longitud_num;
 
                 UTM utm_farma(latitud_num,longitud_num);
                 Farmacia farmacia_(cif_,provincia_,localidadLab_,nombre_, direccionLab_, codPostal_,utm_farma,this);
@@ -287,8 +287,6 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 }catch (std::out_of_range &e) {
                     std::cerr<<e.what()<<std::endl;
                 }
-                grid = MallaRegular<Farmacia*>(floor(minLat),floor(minLon),
-                    ceil(maxLat),ceil(maxLon),505);//CAMBIAR
 
                 fila="";
                 columnas.str(std::string());
@@ -306,6 +304,8 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
 
             }
         }
+        grid = MallaRegular<Farmacia*>(minLat,minLon,
+                   maxLat+1,maxLon+1,505);
 
         is.close();
 
@@ -449,10 +449,12 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     //Insercion en la malla
     multimap<string,Farmacia>::iterator itbat_Farma = pharmacy.begin();
     while (itbat_Farma != pharmacy.end()) {
-        grid.insertar(itbat_Farma->second.get_pos().get_latitud(),
-            itbat_Farma->second.get_pos().get_longitud(), &(itbat_Farma->second));
+        grid.insertar(itbat_Farma->second.get_pos().get_longitud(),
+            itbat_Farma->second.get_pos().get_latitud(), &itbat_Farma->second);
         itbat_Farma++;
     }
+    std::cout<<"Promedio de la malla: "<<grid.promedioElementosPorCelda()<<std::endl;
+    std::cout<<"Maximo de la malla: "<<grid.maxElementosPorCelda()<<std::endl;
 }
 
 /**
