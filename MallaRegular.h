@@ -265,8 +265,7 @@ vector<M> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
     }
 
     // Tomar los n mas cercanos
-    int limite = (n <= candidatos.size()) ? n : candidatos.size();
-    for (int k = 0; k < limite; k++) {
+    for (int k = 0; k < n; k++) {
         resultado.push_back(candidatos[k]);
     }
 
@@ -309,6 +308,7 @@ float MallaRegular<M>::promedioElementosPorCelda() {
     //Calculamos correctamente el promedio y lo devolvemos
     return absolute_promedio/totalCel;
 }
+
 
 
 
