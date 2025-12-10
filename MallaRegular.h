@@ -64,7 +64,7 @@ template<typename M>
     float xMin, yMin, xMax, yMax; // Tamaño real global
     float tamaCasillaX, tamaCasillaY; // Tamaño real de cada casilla
     vector<vector <Casilla<M> > > mallaReg_; // Vector 2D de casillas
-    int tamal_, nDivis_;
+    int lamine_tamal_, nDivis_;
 
     Casilla<M> *obtenerCasilla(float x, float y);
     float distancia_puntos(const float x1, const float y1, const float x2, const float y2);
@@ -79,7 +79,7 @@ public:
     //operator=
     //Añadido
     int numElem();
-    vector<M*> buscarCercana(float xcentro, float ycentro, int n=1);
+    vector<M> buscarCercana(float xcentro, float ycentro, int n=1);
     unsigned maxElementosPorCelda();
     float promedioElementosPorCelda();
 };
@@ -94,7 +94,7 @@ public:
  */
 template<typename M>
 MallaRegular<M>::MallaRegular(float aXMin, float aYMin, float aXMax, float aYMax, int aNDiv):
-xMin(aXMin), yMin(aYMin), xMax(aXMax), yMax(aYMax),tamal_(0),nDivis_(aNDiv)
+xMin(aXMin), yMin(aYMin), xMax(aXMax), yMax(aYMax),lamine_tamal_(0),nDivis_(aNDiv)
 {
     tamaCasillaX = (xMax - xMin)/aNDiv;
     tamaCasillaY = (yMax - yMin)/aNDiv;
@@ -108,7 +108,7 @@ xMin(aXMin), yMin(aYMin), xMax(aXMax), yMax(aYMax),tamal_(0),nDivis_(aNDiv)
 template<typename M>
 MallaRegular<M>::MallaRegular(const MallaRegular<M> &orig):
 xMin(orig.xMin), yMin(orig.yMin), xMax(orig.xMax), yMax(orig.yMax),
-tamal_(orig.tamal_), nDivis_(orig.nDivis_), mallaReg_(orig.mallaReg_)
+lamine_tamal_(orig.lamine_tamal_), nDivis_(orig.nDivis_), mallaReg_(orig.mallaReg_)
 {}
 
 
@@ -135,6 +135,7 @@ template<typename M>
 void MallaRegular<M>::insertar(float x, float y, const M &dato) {
     Casilla<M> *c = obtenerCasilla(x,y);
     c->insertar(dato);
+    lamine_tamal_++;
 }
 
 /**
@@ -160,8 +161,15 @@ M *MallaRegular<M>::buscar(float x, float y, const M &dato) {
 template<typename M>
 bool MallaRegular<M>::borrar(float x, float y, const M &dato) {
     Casilla<M> *c = obtenerCasilla(x,y);
+    lamine_tamal_--;
     return c->borrar(dato);
 }
+
+template<typename M>
+int MallaRegular<M>::numElem() {
+    return lamine_tamal_;
+}
+
 
 /**
  * @brief Funcion que calcula la distancia entre dos puntos
@@ -187,6 +195,7 @@ vector<M> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
 
     int batiencontrados=0;
     int batradar=0;
+
     while(  batradar < nDivis_ && batiencontrados < n ) {
         for (float i=xcentro-(tamaCasillaX*batradar); i<xcentro+(tamaCasillaX*batradar); i=i+tamaCasillaX){
             for (float j=ycentro-(tamaCasillaY*batradar); j<ycentro+(tamaCasillaY*batradar); j=j+tamaCasillaY){
@@ -228,7 +237,13 @@ vector<M> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
     }
 
     //Pasamos n elementos cercanos al vector final
-    for (int k = 0; k < n; ++k) {
+    int batlimite;
+    if (n <= cercanos.size()) {
+        batlimite = n;
+    }else {
+        batlimite = cercanos.size();
+    }
+    for (int k = 0; k < batlimite; ++k) {
         eclipse.push_back(cercanos[k]);
     }
     return eclipse;
@@ -263,7 +278,7 @@ float MallaRegular<M>::promedioElementosPorCelda() {
         }
     }
     //Calculamos correctamente el promedio y lo devolvemos
-    return absolute_promedio/mallaReg_.size();
+    return absolute_promedio/(nDivis_ * nDivis_ );
 }
 
 
