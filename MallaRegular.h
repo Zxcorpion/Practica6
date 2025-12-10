@@ -120,6 +120,11 @@ lamine_tamal_(orig.lamine_tamal_), nDivis_(orig.nDivis_), mallaReg_(orig.mallaRe
  */
 template<typename M>
 Casilla<M>* MallaRegular<M>::obtenerCasilla(float x, float y) {
+    //Valido si esta dentro de los limites de la malla
+    if (x < xMin || x > xMax || y < yMin || y > yMax) {
+        return 0;
+    }
+
     int i = (x - xMin) / tamaCasillaX;
     int j = (y - yMin) / tamaCasillaY;
     return &mallaReg_[i][j];
@@ -134,8 +139,10 @@ Casilla<M>* MallaRegular<M>::obtenerCasilla(float x, float y) {
 template<typename M>
 void MallaRegular<M>::insertar(float x, float y, const M &dato) {
     Casilla<M> *c = obtenerCasilla(x,y);
-    c->insertar(dato);
-    lamine_tamal_++;
+    if (c) {
+        c->insertar(dato);
+        lamine_tamal_++;
+    }
 }
 
 /**
@@ -148,7 +155,9 @@ void MallaRegular<M>::insertar(float x, float y, const M &dato) {
 template<typename M>
 M *MallaRegular<M>::buscar(float x, float y, const M &dato) {
     Casilla<M> *aux=obtenerCasilla(x,y);
-    return aux->buscar(dato);
+    if (aux){
+        return aux->buscar(dato);
+    }
 }
 
 /**
@@ -161,8 +170,11 @@ M *MallaRegular<M>::buscar(float x, float y, const M &dato) {
 template<typename M>
 bool MallaRegular<M>::borrar(float x, float y, const M &dato) {
     Casilla<M> *c = obtenerCasilla(x,y);
-    lamine_tamal_--;
-    return c->borrar(dato);
+    if (c && c->borrar(dato)) {
+        lamine_tamal_--;
+        return true;
+    }
+    return false;
 }
 
 template<typename M>
@@ -185,68 +197,80 @@ float MallaRegular<M>::distancia_puntos(const float x1, const float y1, const fl
     return distancia;
 }
 
-//Dudoso
+/**
+ * @brief Busca los n elementos mas cercanos a un punto
+ * @param xcentro Coordenada X del centro
+ * @param ycentro Coordenada Y del centro
+ * @param n Numero de elementos a buscar
+ * @return Vector con los n elementos mas cercanos
+ */
 template<typename M>
 vector<M> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
-    // Creamos los vectores donde guardaremos los cercanos y el vector final
-    vector<M> cercanos;
-    std::vector<M> eclipse;//vector final
-    Casilla<M>* finn;//puntero a casilla<M>
+    vector<M> candidatos;
+    vector<M> resultado;
 
-    int batiencontrados=0;
-    int batradar=0;
+    // Obtener indices de la celda central
+    int centroI = (xcentro - xMin) / tamaCasillaX;
+    int centroJ = (ycentro - yMin) / tamaCasillaY;
 
-    while(  batradar < nDivis_ && batiencontrados < n ) {
-        for (float i=xcentro-(tamaCasillaX*batradar); i<xcentro+(tamaCasillaX*batradar); i=i+tamaCasillaX){
-            for (float j=ycentro-(tamaCasillaY*batradar); j<ycentro+(tamaCasillaY*batradar); j=j+tamaCasillaY){
-                if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
-                    finn = obtenerCasilla(i,j);
-                    batiencontrados+=finn->puntos.size();
+    // Asegurar que estan en rango
+    if (centroI < 0) centroI = 0;
+    if (centroI >= nDivis_) centroI = nDivis_ - 1;
+    if (centroJ < 0) centroJ = 0;
+    if (centroJ >= nDivis_) centroJ = nDivis_ - 1;
+
+    int radio = 0;
+
+    // Expandir en capas hasta encontrar suficientes elementos
+    while (candidatos.size() < n && radio < nDivis_) {
+        // Recorrer el anillo a distancia 'radio'
+        for (int i = centroI - radio; i <= centroI + radio; i++) {
+            for (int j = centroJ - radio; j <= centroJ + radio; j++) {
+                // Solo procesar celdas en el borde del cuadrado (el anillo)
+                bool enBorde = (i == centroI - radio || i == centroI + radio ||
+                               j == centroJ - radio || j == centroJ + radio);
+
+                // Si no esta en el borde y el radio es mayor que 0, saltar
+                if (enBorde || radio == 0) {
+                    // Verificar limites
+                    if (i >= 0 && i < nDivis_ && j >= 0 && j < nDivis_) {
+                        typename list<M>::iterator it = mallaReg_[i][j].inicio();
+                        while (it != mallaReg_[i][j].final()) {
+                            candidatos.push_back(*it);
+                            ++it;
+                        }
+                    }
                 }
             }
         }
-        if (n>batiencontrados) {
-            batradar++;
-        }
+        radio++;
     }
 
-    for (float i=xcentro-(tamaCasillaX*batradar); i<xcentro+(tamaCasillaX*batradar); i=i+tamaCasillaX){
-        for (float j=ycentro-(tamaCasillaY*batradar); j<ycentro+(tamaCasillaY*batradar); j=j+tamaCasillaY){
-            if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
-                finn = obtenerCasilla(i,j);//volvemos a obtener la casilla
-                typename std::list<M>::iterator it = finn->puntos.begin();//Lista para iterar los puntos
-                while(it != finn->puntos.end()) {
-                    cercanos.push_back(*it);
-                    it++;
-                }
+    // Si no hay candidatos, retornar vector vacio
+    if (candidatos.empty()) {
+        return resultado;
+    }
+
+    // Ordenar por distancia usando bubble sort (como en el original)
+    for (int i = 0; i < candidatos.size() - 1; i++) {
+        for (int j = 0; j < candidatos.size() - i - 1; j++) {
+            float dist1 = distancia_puntos(xcentro, ycentro, candidatos[j]->getX(), candidatos[j]->getY());
+            float dist2 = distancia_puntos(xcentro, ycentro, candidatos[j+1]->getX(), candidatos[j+1]->getY());
+            if (dist1 > dist2) {
+                M temp = candidatos[j];
+                candidatos[j] = candidatos[j+1];
+                candidatos[j+1] = temp;
             }
         }
     }
 
-    //burbuja para ordenar por distancias
-    for(int i=0;i<cercanos.size()-1;i++) {
-        for(int j=0;j<cercanos.size()-i-1;j++) {
-            float aux1=distancia_puntos(xcentro,ycentro,cercanos[j]->getX(),cercanos[j]->getY());
-            float aux2=distancia_puntos(xcentro,ycentro,cercanos[j+1]->getX(),cercanos[j+1]->getY());
-            if(aux1>aux2) {
-                M temp=cercanos[j];
-                cercanos[j]=cercanos[j+1];
-                cercanos[j+1]=temp;
-            }
-        }
+    // Tomar los n mas cercanos
+    int limite = (n <= candidatos.size()) ? n : candidatos.size();
+    for (int k = 0; k < limite; k++) {
+        resultado.push_back(candidatos[k]);
     }
 
-    //Pasamos n elementos cercanos al vector final
-    int batlimite;
-    if (n <= cercanos.size()) {
-        batlimite = n;
-    }else {
-        batlimite = cercanos.size();
-    }
-    for (int k = 0; k < batlimite; ++k) {
-        eclipse.push_back(cercanos[k]);
-    }
-    return eclipse;
+    return resultado;
 }
 
 /**
@@ -256,12 +280,13 @@ vector<M> MallaRegular<M>::buscarCercana(float xcentro, float ycentro, int n) {
 template<typename M>
 unsigned MallaRegular<M>::maxElementosPorCelda() {
     //Declaramos una auxiliar para guardar el maxElementos
-    int batimax=-999999;
+    unsigned batimax = 0;
     //Usamos dos bucles como si fuera una matriz
-    for(int i=0;i<mallaReg_.size();i++) {
-        for (int j=0;j<mallaReg_[i].size();j++) {
-            if (mallaReg_[i][j].puntos.size() > batimax) {
-                batimax=mallaReg_[i][j].puntos.size();
+    for(int i=0;i<nDivis_;i++) {
+        for (int j=0;j<nDivis_;j++) {
+            unsigned tam = mallaReg_[i][j].puntos.size();
+            if (tam > batimax) {
+                batimax = tam;
             }
         }
     }
@@ -272,13 +297,17 @@ unsigned MallaRegular<M>::maxElementosPorCelda() {
 template<typename M>
 float MallaRegular<M>::promedioElementosPorCelda() {
     float absolute_promedio=0;
-    for(int i=0;i<mallaReg_.size();i++) {
-        for (int j=0;j<mallaReg_[i].size();j++) {
-            absolute_promedio+=mallaReg_[i][j].puntos.size();
+    int totalCel = nDivis_ * nDivis_;
+    if (totalCel == 0) {
+        throw std::invalid_argument("ERROR, el total de celdas es 0");
+    }
+    for(int i=0;i<nDivis_;i++) {
+        for (int j=0;j<nDivis_;j++) {
+            absolute_promedio += mallaReg_[i][j].puntos.size();
         }
     }
     //Calculamos correctamente el promedio y lo devolvemos
-    return absolute_promedio/(nDivis_ * nDivis_ );
+    return absolute_promedio/totalCel;
 }
 
 

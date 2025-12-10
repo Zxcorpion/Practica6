@@ -278,7 +278,7 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 if (longitud_num < minLon)
                     minLon = longitud_num;
 
-                UTM utm_farma(latitud_num,longitud_num);
+                UTM utm_farma(longitud_num,latitud_num);
                 Farmacia farmacia_(cif_,provincia_,localidadLab_,nombre_, direccionLab_, codPostal_,utm_farma,this);
                 try {
                     //pharmacy.push_back(farmacia_);
@@ -304,8 +304,8 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
 
             }
         }
-        grid = MallaRegular<Farmacia*>(minLat,minLon,
-                   maxLat+1,maxLon+1,505);
+        grid = MallaRegular<Farmacia*>(minLon-1,minLat-1,
+                   maxLon+1,maxLat+1,505);
 
         is.close();
 
@@ -350,7 +350,7 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
                 }
 
 
-                UTM utm(lat_num_usu,long_num_usu);
+                UTM utm(long_num_usu, lat_num_usu);
                 Usuario usuarios(id_usu_num, provincia_Usu_, utm,this);
                 try {
                     //pharmacy.push_back(farmacia_);
@@ -449,8 +449,7 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     //Insercion en la malla
     multimap<string,Farmacia>::iterator itbat_Farma = pharmacy.begin();
     while (itbat_Farma != pharmacy.end()) {
-        grid.insertar(itbat_Farma->second.get_pos().get_longitud(),
-            itbat_Farma->second.get_pos().get_latitud(), &itbat_Farma->second);
+        grid.insertar(itbat_Farma->second.getX(),itbat_Farma->second.getY(), &itbat_Farma->second);
         itbat_Farma++;
     }
     std::cout<<"Promedio de la malla: "<<grid.promedioElementosPorCelda()<<std::endl;

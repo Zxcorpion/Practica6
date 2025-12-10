@@ -50,3 +50,9 @@ float Usuario::getX() const {
 float Usuario::getY() const {
     return coord_.get_latitud();
 }
+
+std::vector<Farmacia *> Usuario::getFarmaciaCercanas(const int num) {
+    std::vector<Farmacia *> arkham_origins;
+     arkham_origins = linkUser_->buscarFarmacias(coord_,num);
+    return arkham_origins;
+}
