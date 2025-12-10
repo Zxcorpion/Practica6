@@ -36,9 +36,18 @@ int main() {
     //Prueba 1
     //MediExpress medBatman2("../pa_medicamentos.csv","../lab2.csv","../farmacias.csv",3310,0.68);
     //medBatman2.mostrarEstado();
-    MediExpress medBatman("../pa_medicamentos.csv","../lab2.csv","../farmacias.csv",3310,0.65);
+    MediExpress medBatman("../pa_medicamentos.csv","../lab2.csv",
+        "../farmacias-coord.csv","usuarios.csv",3310,0.65);
     medBatman.mostrarEstado();
 
+    //PRUEBA 1
+    std::vector<Usuario*> usuarios_Jaen = medBatman.buscar_Usu_Provincia("Jaen");
+    std::vector<Farmacia*> farmas;
+    for (int i = 0; i < usuarios_Jaen.size(); i++) {
+        usuarios_Jaen[i]->getFarmaciaCercanas(2);
+    }
+
+/*
     std::string medicamentos[6]={
             {"MAGNESIO CLORURO HEXAHIDRATO"},
             {"CLORURO"},
@@ -77,7 +86,7 @@ int main() {
     PaMedicamento *oxido = medBatman.buscaCompuestoMed(id_Magnes);
     PaMedicamento *carbonato = medBatman.buscaCompuestoMed(id_Carbonato);
     PaMedicamento *cloruro = medBatman.buscaCompuestoMed(id_Cloruro);
-    */
+
     PaMedicamento* nuevomag= medBatman.buscaCompuestoMed(3640);
     //Aqui empezamos a buscar los medicamentos
     //cambiar pq busca ahora es private
@@ -104,7 +113,7 @@ int main() {
         std::cout<<"Stock inicial de cada medicamento de la Farmacia "<<i+1<< ": "<<farmas_Sevilla[i]->get_nombre()<<std::endl;
         std::cout<<"Oxido: "<<stock_Magnesio<<", Carbonato: "<<stock_Carbonat<<", Cloruro: "<<stock_Clorur<<std::endl;
         std::cout<<"==============================="<<std::endl;
-    */
+
         if(Magnesio.size()==0) {
             std::cout<<"En la farmacia no queda nada de magnesio, por tanto pedimos OXIDO DE MAGNESIO"<<std::endl;
             farmas_Sevilla[i]->comprarMedicam(3640,10,nuevomag);
@@ -132,7 +141,7 @@ int main() {
                             if(aux.size()==0) {
                                 std::cout<<"Como no queda ningun magnesio, pedimos OXIDO DE MAGNESIO"<<std::endl;
                                 farmas_Sevilla[i]->comprarMedicam(3640,10,nuevomag);
-                            }*/
+                            }
                     }
                 }
                 if(comprado==false){
@@ -222,5 +231,6 @@ int main() {
     std::cout<<"Redispersion"<<std::endl;
     MediExpress medBatman2("../pa_medicamentos.csv","../lab2.csv","../farmacias.csv",3310,0.72);
     medBatman2.mostrarEstado();
+    */
     return 0;
 }
