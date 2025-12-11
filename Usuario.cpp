@@ -69,14 +69,14 @@ int Usuario::comprarMedicam(int num, PaMedicamento *paMed, Farmacia *farmacia) {
     if(robin >= num) {
         //Hay suficientes entonces compramos
         farmacia->comprarMedicam(paMed->get_id_num(),num,paMed);
-
+        return num;
     }else {
-        //Si no hay suficientes unidades, compor el stock que haya e indico lo que me llevo
+        //Si no queda stock devolvemos 0
         if(robin==0) {
-            std::cout<<"NO queda ninguna unidad en stock"<<std::endl;
+            return 0;
         }else {
-            farmacia->comprarMedicam(paMed->get_id_num(),num,paMed);
-            std::cout<<"No queda suficiente stock. Nos llevamos lo que queda: "<<robin<<" unidades."<<std::endl;
+            farmacia->comprarMedicam(paMed->get_id_num(),robin,paMed);
+            return robin;
         }
     }
 }

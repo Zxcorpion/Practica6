@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.29.6)
 project(Practica6)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -16,10 +16,7 @@ add_executable(Practica6 main.cpp
         Stock.h
         ThashMedicam.cpp
         ThashMedicam.h
-        MallaRegular.cpp
         MallaRegular.h
-        Casilla.cpp
-        Casilla.h
         Usuario.cpp
         Usuario.h
         UTM.cpp

@@ -39,21 +39,104 @@ int main() {
         "../farmacias-coord.csv","../usuarios.csv",3310,0.65);
 
     //PRUEBA 1
-    std::vector<Usuario*> usuarios_Jaen = medBatman.buscar_Usu_Provincia("JAEN");
-    Farmacia *farma_Ubeda;
+   std::vector<Usuario*> usuarios_Jaen = medBatman.buscar_Usu_Provincia("Jaen");
+    std::string medicamentos[3]=
+        {"MAGNESIO CLORURO HEXAHIDRATO",
+        "LIDOCAINA HIDROCLORURO",
+        "MENTA PIPERITA"};
+    int cont=0;
+
     for (int i = 0; i < usuarios_Jaen.size(); i++) {
-    std::vector<Farmacia*> farmas;
-        bool bandera = false;
+        Farmacia *farma_Ubeda=nullptr;
+        //Buscamos las farmacias mas cercanas a cada usuario
+        std::vector<Farmacia*> farmas;
         farmas = usuarios_Jaen[i]->getFarmaciaCercanas(8);
-        for (int j = 0; j < farmas.size(); i++)
-        if (farmas[i]->get_localidad() == "UBEDA" && bandera == false) {
-            farma_Ubeda = farmas[i];
-            bandera = true;
+        //Si ecnontramos la farmacia de ubeda la guardamos
+        for (int j = 0; j < farmas.size(); j++) {
+            if(j==0) {
+                std::cout<<"Para la persona "<<i+1<<" la farmacia que tiene mas cercana es la de "<<farmas[j]->get_localidad()<<std::endl;
+            }
+            if (farmas[j]->get_localidad() == "UBEDA") {
+                farma_Ubeda = farmas[j];
+                break;
+            }
+        }
+        //Si la hemos encontrado nos desplazamos e intentamos comprar
+        if (farma_Ubeda != nullptr) {
+            bool batexito=false;
+            std::vector<PaMedicamento*> vector_paMed=usuarios_Jaen[i]->quieroMedicam(medicamentos[cont],farma_Ubeda);
+            if (vector_paMed.size() > 0) {//si existe
+                for (int j = 0; j < vector_paMed.size(); j++) {
+                    //guardamos la cantidad que compramos
+                    int cant=usuarios_Jaen[i]->comprarMedicam(1,vector_paMed[j],farma_Ubeda);
+                    if(cant>0) {
+                        std::cout<<"La persona "<<i+1<<" ha comprado "<<cant<<" unidades de "<<medicamentos[cont]<<std::endl;
+                        std::vector<PaMedicamento*> vector=medBatman.buscaCompuesto(medicamentos[cont]);
+                        batexito=true;
+                        for (int k = 0; k < vector.size(); k++) {
+                            if(vector[k]->get_nombre() == medicamentos[cont]) {
+                                std::cout<<medicamentos[cont]<<": "<<farma_Ubeda->buscaMedicamID(vector[k]->get_id_num())<<std::endl;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+                if(batexito==false){//si no existe en la farmacia o no queda stock pues pedimos 10
+                std::cout<<"Al llegar la persona "<<i+1<<" no queda nada de stock o no existe. Se procede a pedir 10 unidades de "<<medicamentos[cont]<<std::endl;
+                std::vector<PaMedicamento*> vector=medBatman.buscaCompuesto(medicamentos[cont]);
+                for (int k = 0; k < vector.size(); k++) {
+                    if(vector[k]->get_nombre() == medicamentos[cont]) {
+                        farma_Ubeda->comprarMedicam(vector[k]->get_id_num(),10,vector[k]);
+                        std::cout<<medicamentos[cont]<<": "<<farma_Ubeda->buscaMedicamID(vector[k]->get_id_num())<<std::endl;
+                        break;
+                    }
+                }
+            }
+            cont=(cont+1)%3;
         }
     }
 
 
-    std::string medicamentos[3]=
+   /* std::vector<Farmacia*> farmas;
+        bool bandera = false;
+        farmas = usuarios_Jaen[i]->getFarmaciaCercanas(8);
+        for (int j = 0; j < farmas.size(); j++)
+        if (farmas[j]->get_localidad() == "UBEDA" && bandera == false) {
+            farma_Ubeda = farmas[i];
+            bandera = true;
+            std::vector<PaMedicamento*> med1 =usuarios_Jaen[i]->quieroMedicam(medicamentos[cont],farma_Ubeda);
+            if (med1.size() > 0) {
+                for (int k = 0; k < med1.size(); k++) {
+                    if(med1[k]->get_nombre()==medicamentos[cont]) {
+                        std::cout<<"La persona de Jaen "<<i<<" Ha comprado una unidad del medicamento: "<<medicamentos[cont]<<std::endl;
+                        usuarios_Jaen[i]->comprarMedicam(1,med1[k],farma_Ubeda);
+                        break;
+                    }
+                }
+            }else {
+                std::vector<PaMedicamento*> aux=medBatman.buscaCompuesto(medicamentos[cont]);
+                if (aux.size() > 0) {
+                    bool encontrado=false;
+                    for (int segcontador = 0; segcontador < aux.size() && encontrado == false; segcontador++) {
+                        if(aux[segcontador]->get_nombre()==medicamentos[cont]) {
+                            encontrado = true;
+                            std::cout<<"La persona de Jaen "<<i<<" No ha encontrado stock del medicamento: "<<medicamentos[cont]<<std::endl;
+                            std::cout<<"Por tanto pedimos 10 unidades"<<std::endl;
+                            farma_Ubeda->comprarMedicam(aux[segcontador]->get_id_num(),10,aux[segcontador]);
+                        }
+                    }
+                }
+            }
+            cont++;
+            if(cont==3) {
+                cont=0;
+            }
+        }
+    }
+*/
+
+    /*std::string medicamentos[3]=
         {"MAGNESIO CLORURO HEXAHIDRATO",
         "LIDOCAINA HIDROCLORURO",
         "MENTA PIPERITA"};
@@ -64,6 +147,7 @@ int main() {
     vector_Loco[3] = medBatman.buscaCompuesto(medicamentos[3]);
     vector_Loco[4] = medBatman.buscaCompuesto(medicamentos[4]);
     vector_Loco[5] = medBatman.buscaCompuesto(medicamentos[5]);
+    */
     /*
 
     std::cout<<"================================================================================="<<std::endl;

@@ -843,7 +843,7 @@ std::vector<Usuario*> MediExpress::buscar_Usu_Provincia(const std::string &nombr
     //Uso un iterador para recorrer el multimapa
     std::multimap<int,Usuario>::iterator it_Usus = users.begin();
     while (it_Usus != users.end()) {
-        if (it_Usus->second.get_provincia() == "Jaen") {
+        if (it_Usus->second.get_provincia() == nombreProvin) {
             arkham_resultado.push_back(&it_Usus->second);
         }
         it_Usus++;
