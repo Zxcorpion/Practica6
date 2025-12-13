@@ -45,128 +45,123 @@ int main() {
         "LIDOCAINA HIDROCLORURO",
         "MENTA PIPERITA"};
     int cont=0;
-
-    for (int i = 0; i < usuarios_Jaen.size(); i++) {
-        Farmacia *farma_Ubeda=nullptr;
-        //Buscamos las farmacias mas cercanas a cada usuario
-        std::vector<Farmacia*> farmas;
-        farmas = usuarios_Jaen[i]->getFarmaciaCercanas(8);
-        //Si ecnontramos la farmacia de ubeda la guardamos
-        for (int j = 0; j < farmas.size(); j++) {
-            if(j==0) {
-                std::cout<<"Para la persona "<<i+1<<" la farmacia que tiene mas cercana es la de "<<farmas[j]->get_localidad()<<std::endl;
-            }
-            if (farmas[j]->get_localidad() == "UBEDA") {
-                farma_Ubeda = farmas[j];
-                break;
-            }
-        }
-        //Si la hemos encontrado nos desplazamos e intentamos comprar
-        if (farma_Ubeda != nullptr) {
-            bool batexito=false;
-            std::vector<PaMedicamento*> vector_paMed=usuarios_Jaen[i]->quieroMedicam(medicamentos[cont],farma_Ubeda);
-            if (vector_paMed.size() > 0) {//si existe
-                for (int j = 0; j < vector_paMed.size(); j++) {
-                    //guardamos la cantidad que compramos
-                    int cant=usuarios_Jaen[i]->comprarMedicam(1,vector_paMed[j],farma_Ubeda);
-                    if(cant>0) {
-                        std::cout<<"La persona "<<i+1<<" ha comprado "<<cant<<" unidades de "<<medicamentos[cont]<<std::endl;
-                        std::vector<PaMedicamento*> vector=medBatman.buscaCompuesto(medicamentos[cont]);
-                        batexito=true;
-                        for (int k = 0; k < vector.size(); k++) {
-                            if(vector[k]->get_nombre() == medicamentos[cont]) {
-                                std::cout<<medicamentos[cont]<<": "<<farma_Ubeda->buscaMedicamID(vector[k]->get_id_num())<<std::endl;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-                if(batexito==false){//si no existe en la farmacia o no queda stock pues pedimos 10
-                std::cout<<"Al llegar la persona "<<i+1<<" no queda nada de stock o no existe. Se procede a pedir 10 unidades de "<<medicamentos[cont]<<std::endl;
-                std::vector<PaMedicamento*> vector=medBatman.buscaCompuesto(medicamentos[cont]);
-                for (int k = 0; k < vector.size(); k++) {
-                    if(vector[k]->get_nombre() == medicamentos[cont]) {
-                        farma_Ubeda->comprarMedicam(vector[k]->get_id_num(),10,vector[k]);
-                        std::cout<<medicamentos[cont]<<": "<<farma_Ubeda->buscaMedicamID(vector[k]->get_id_num())<<std::endl;
-                        break;
-                    }
-                }
-            }
-            cont=(cont+1)%3;
-        }
-    }
-
-
-   /* std::vector<Farmacia*> farmas;
-        bool bandera = false;
-        farmas = usuarios_Jaen[i]->getFarmaciaCercanas(8);
-        for (int j = 0; j < farmas.size(); j++)
-        if (farmas[j]->get_localidad() == "UBEDA" && bandera == false) {
-            farma_Ubeda = farmas[i];
-            bandera = true;
-            std::vector<PaMedicamento*> med1 =usuarios_Jaen[i]->quieroMedicam(medicamentos[cont],farma_Ubeda);
-            if (med1.size() > 0) {
-                for (int k = 0; k < med1.size(); k++) {
-                    if(med1[k]->get_nombre()==medicamentos[cont]) {
-                        std::cout<<"La persona de Jaen "<<i<<" Ha comprado una unidad del medicamento: "<<medicamentos[cont]<<std::endl;
-                        usuarios_Jaen[i]->comprarMedicam(1,med1[k],farma_Ubeda);
-                        break;
-                    }
-                }
-            }else {
-                std::vector<PaMedicamento*> aux=medBatman.buscaCompuesto(medicamentos[cont]);
-                if (aux.size() > 0) {
-                    bool encontrado=false;
-                    for (int segcontador = 0; segcontador < aux.size() && encontrado == false; segcontador++) {
-                        if(aux[segcontador]->get_nombre()==medicamentos[cont]) {
-                            encontrado = true;
-                            std::cout<<"La persona de Jaen "<<i<<" No ha encontrado stock del medicamento: "<<medicamentos[cont]<<std::endl;
-                            std::cout<<"Por tanto pedimos 10 unidades"<<std::endl;
-                            farma_Ubeda->comprarMedicam(aux[segcontador]->get_id_num(),10,aux[segcontador]);
-                        }
-                    }
-                }
-            }
-            cont++;
-            if(cont==3) {
-                cont=0;
-            }
-        }
-    }
-*/
-
-    /*std::string medicamentos[3]=
-        {"MAGNESIO CLORURO HEXAHIDRATO",
-        "LIDOCAINA HIDROCLORURO",
-        "MENTA PIPERITA"};
-    std::vector<std::vector<PaMedicamento*> > vector_Loco(6);
-    vector_Loco[0] = medBatman.buscaCompuesto(medicamentos[0]);
-    vector_Loco[1] = medBatman.buscaCompuesto(medicamentos[1]);
-    vector_Loco[2] = medBatman.buscaCompuesto(medicamentos[2]);
-    vector_Loco[3] = medBatman.buscaCompuesto(medicamentos[3]);
-    vector_Loco[4] = medBatman.buscaCompuesto(medicamentos[4]);
-    vector_Loco[5] = medBatman.buscaCompuesto(medicamentos[5]);
-    */
-    /*
-
-    std::cout<<"================================================================================="<<std::endl;
-    std::cout<<"\n";
-    std::cout<<"Comienzo de la prueba 1"<<std::endl;
-    for (int k = 0; k < vector_Loco.size(); k++) {
-        std::cout<<"Buscando "<<medicamentos[k]<<"..."<<std::endl;
-        std::cout<<"Se han encontrado "<<vector_Loco[k].size()<<std::endl;
-        for (int l = 0; l < vector_Loco[k].size(); l++){
-            std::cout<<"Nombre del medicamento "<< l+1 <<" : "<< vector_Loco[k][l]->get_nombre()<<std::endl;
-        }
-    }
-
-    //Prueba 2
-    std::cout<<"================================================================================="<<std::endl;
-    std::cout<<"\n";
+std::cout<<"COMIENZO DE LA PRUEBA 1"<<endl;
+std::cout<<"\n";
+// std::vector<Farmacia*> farma_Ubeda = medBatman.buscar_Farmacia_Provincia("JAEN");
+//     for (int i = 0; i < usuarios_Jaen.size(); i++) {
+//         //Si la hemos encontrado nos desplazamos e intentamos comprar
+//         if (farma_Ubeda.size() != 0) {
+//             bool batexito=false;
+//             std::vector<PaMedicamento*> vector_paMed=usuarios_Jaen[i]->quieroMedicam(medicamentos[cont],farma_Ubeda[0]);
+//             if (vector_paMed.size() > 0) {//si existe
+//                 for (int j = 0; j < vector_paMed.size(); j++) {
+//                     //guardamos la cantidad que compramos
+//                     int cant=usuarios_Jaen[i]->comprarMedicam(1,vector_paMed[j],farma_Ubeda[0]);
+//                     if(cant>0) {
+//                         std::cout<<"La persona "<<i+1<<" ha comprado "<<cant<<" unidades de "<<medicamentos[cont]<<std::endl;
+//                         std::vector<PaMedicamento*> vector=medBatman.buscaCompuesto(medicamentos[cont]);
+//                         batexito=true;
+//                         for (int k = 0; k < vector.size(); k++) {
+//                             if(vector[k]->get_nombre() == medicamentos[cont]) {
+//                                 std::cout<< "Stock de" <<medicamentos[cont]<<": "<<farma_Ubeda[0]->buscaMedicamID(vector[k]->get_id_num())<<std::endl;
+//                                 break;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//                 if(batexito==false){//si no existe en la farmacia o no queda stock pues pedimos 10
+//                 std::cout<<"Al llegar la persona "<<i+1<<" no queda nada de stock o no existe. Se procede a pedir 10 unidades de "<<medicamentos[cont]<<std::endl;
+//                 std::vector<PaMedicamento*> vector=medBatman.buscaCompuesto(medicamentos[cont]);
+//                 for (int k = 0; k < vector.size(); k++) {
+//                     if(vector[k]->get_nombre() == medicamentos[cont]) {
+//                         farma_Ubeda[0]->comprarMedicam(vector[k]->get_id_num(),10,vector[k]);
+//                         std::cout<<medicamentos[cont]<<": "<<farma_Ubeda[0]->buscaMedicamID(vector[k]->get_id_num())<<std::endl;
+//                         break;
+//                     }
+//                 }
+//             }
+//             cont=(cont+1)%3;
+//         }
+//     }
+    std::cout<<"========================================"<<std::endl;
+    std::cout<<"COMIENZO DE LA PRUEBA 2"<<std::endl;
 
     std::vector<Farmacia*> farmas_Sevilla = medBatman.buscar_Farmacia_Provincia("SEVILLA");
     std::cout<<"Farmacias encontradas situadas Sevilla: "<< farmas_Sevilla.size()<<std::endl;// esto lo tengo como comprobacion de cuantas de sevilla hay
+
+    std::cout<<"========================================"<<std::endl;
+    std::cout<<"COMIENZO DE LA PRUEBA 3"<<std::endl;
+    //Primero busco todas las farmacias de madrid
+    std::vector<Farmacia*> farmas_Madrid = medBatman.buscar_Farmacia_Provincia("MADRID");
+    //Luego los usuarios de madrid
+    std::vector<Farmacia*> farmas_Madrid_bismut;
+    //Busco ahora las farmacias de madrid que tengas bismuto
+    for (int i = 0; i < farmas_Madrid.size(); i++) {
+        std::vector<PaMedicamento*> vectorBismuto = farmas_Madrid[i]->buscaMedicamNombre("BISMUTO");
+        bool bandera = false;
+        for (int j = 0; j < vectorBismuto.size() && bandera == false; j++) {
+            if (farmas_Madrid[i]->buscaMedicamID(vectorBismuto[j]->get_id_num()) > 0) {
+                farmas_Madrid_bismut.push_back(farmas_Madrid[i]);
+                bandera = true;
+            }
+        }
+    }
+    //Aqui ya tendriamos las farmacias de madrid con bismuto
+    //Ahora busco a los usuarios que tienen esas farmacias cerca para comprar el bismuto ahi
+    std::vector<Usuario*> usus_Madrid = medBatman.buscar_Usu_Provincia("Madrid");
+    for (int i = 0; i < usus_Madrid.size(); i++) {
+        std::vector<Farmacia*> cercanas_madrit_usu = usus_Madrid[i]->getFarmaciaCercanas(3);
+        bool encontrado = false;
+        Farmacia *farma_compra;
+        for (int j = 0; j < farmas_Madrid_bismut.size() && encontrado == false; j++) {
+            //Aqui comparo la farmacia j-esima con alguna de las 3 mas cercanas
+            for (int k = 0; k < cercanas_madrit_usu.size(); k++) {
+                if (farmas_Madrid_bismut[j]->get_cif() == cercanas_madrit_usu[k]->get_cif()) {
+                    encontrado = true;
+                    //Me quedo con esa farmacia
+                    farma_compra = cercanas_madrit_usu[k];
+                }
+            }
+        }
+        if (encontrado == true) {
+            std::cout<<"El usuario con ID "<<usus_Madrid[i]->get_id()<<" ha encontrado una farmacia con bismuto cerca de el"<<std::endl;
+            //Compruebo si le queda stock
+            std::vector<PaMedicamento*> bismutos_Comprar = farma_compra->buscaMedicamNombre("BISMUTO");
+            //Este booleano me sirve para que solo compre 1 y se vaya
+            bool bandera = false;
+            int resul = 0;
+            for (int l = 0; l < bismutos_Comprar.size() && bandera == false; l++) {
+                if (farma_compra->buscaMedicamID(bismutos_Comprar[l]->get_id_num()) > 0) {
+                    resul = usus_Madrid[i]->comprarMedicam(1,bismutos_Comprar[l],farma_compra);
+                }
+                if (resul == 1) {
+                    std::cout<<"El usuario con ID "<<usus_Madrid[i]->get_id()<<" ha comprado "<<resul <<" unidad/es de "<<bismutos_Comprar[l]->get_nombre()<<std::endl;
+                    std::cout<<"Stock de "<<bismutos_Comprar[l]->get_nombre()<<": "<<farma_compra->buscaMedicamID(bismutos_Comprar[l]->get_id_num())<<std::endl;
+                    bandera = true;
+                }
+            }
+        }else {
+            std::cout<<"El usuario con ID "<<usus_Madrid[i]->get_id()<<" no ha encontrado una farmacia con bismuto cerca de el"<<std::endl;
+        }
+    }
+    std::cout<<"\n";
+    std::cout<<"COMIENZO DE LA PRUEBA 4"<<std::endl;
+    //Encuentro todos los bismutos
+    std::vector<PaMedicamento*> bismutos_borrar = medBatman.buscaCompuesto("BISMUTO");
+    if (bismutos_borrar.size() != 0) {
+        std::cout<<"Procediendo con la eliminacion de los bismutos..."<<std::endl;
+        for (int m = 0; m < bismutos_borrar.size(); m++) {
+            bool borrado = medBatman.eliminarMedicamento(bismutos_borrar[m]->get_id_num());
+            if (borrado == true) {
+                std::cout<<bismutos_borrar[m]->get_nombre()<<" ha sido eliminado con exito"<<std::endl;
+            }else {
+                std::cout<<"No hay bismutos que eliminar de ninguna farmacia"<<std::endl;
+            }
+        }
+    }
+
+
     /*
     int id_Magnes = 3640, id_Carbonato = 3632, id_Cloruro = 3633;
     PaMedicamento *oxido = medBatman.buscaCompuestoMed(id_Magnes);
