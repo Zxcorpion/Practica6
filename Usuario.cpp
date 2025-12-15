@@ -81,3 +81,18 @@ int Usuario::comprarMedicam(int num, PaMedicamento *paMed, Farmacia *farmacia) {
     }
 }
 
+/**
+ *
+ * @param x1 Latitud del usuario
+ * @param y1 Longitid del usuario
+ * @param x2 Longitud de la farmaacia
+ * @param y2 Latitud de la farmacia
+ * @return Distancia de un usuario a una farmacia
+ */
+float Usuario::distanciaFarmacia(const float x1, const float y1) {
+    float x_usuario = getX();
+    float y_usuario = getY();
+    float distancia = sqrt(pow(x_usuario-x1,2)+pow(y_usuario-y1,2));
+    return distancia;
+}
+

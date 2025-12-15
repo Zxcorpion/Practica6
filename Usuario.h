@@ -28,6 +28,7 @@ private:
     std::vector<Farmacia*> getFarmaciaCercanas(const int num);
     std::vector<PaMedicamento*> quieroMedicam(std::string nombre, Farmacia *farmacia);
     int comprarMedicam(int num, PaMedicamento *paMed, Farmacia *farmacia);
+    float distanciaFarmacia(const float x1, const float y1);
 
     float getX() const;
     float getY() const;

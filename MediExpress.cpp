@@ -454,6 +454,24 @@ MediExpress::MediExpress(const std::string &medicamentos, const std::string &lab
     }
     std::cout<<"Promedio de la malla: "<<grid.promedioElementosPorCelda()<<std::endl;
     std::cout<<"Maximo de la malla: "<<grid.maxElementosPorCelda()<<std::endl;
+
+    //Parejas
+    std::cout<<"Insercion de la nueva farmacia de Jaen"<<std::endl;
+    UTM coord_Jaen(-3.79104,37.78710);
+    Farmacia farma_Nueva_Jaen("12345678A","JAEN","JAEN","FARMACIA NUEVA",
+        "PASEO DE ESPAÑA 35","23009",coord_Jaen,this);
+    //Busco todos los medicamentos que tengan MAGNESIO y los añado a la farmacia nueva
+    std::vector<PaMedicamento*> magnesios_Jaen = buscaCompuesto("MAGNESIO");
+    for (int i = 0; i < magnesios_Jaen.size(); i++) {
+        //Aqui le meto todos los magnesios y le doy 10 uds
+        farma_Nueva_Jaen.nuevoStock(magnesios_Jaen[i],10);
+    }
+    try {
+        pharmacy.insert(std::pair<std::string ,Farmacia>("JAEN",farma_Nueva_Jaen));
+        vectorCIFS.push_back("12345678A");
+    }catch (std::out_of_range &e) {
+        std::cerr<<e.what()<<std::endl;
+    }
 }
 
 /**
@@ -823,11 +841,18 @@ void MediExpress::mostrarEstado() {
     std::cout<<"Numero de redispersiones: "<<redispersiones()<<std::endl;
 }
 
-//AHORA ES FLOAT
+/**
+ * @brief Getter del factor de carga de la malla
+ * @return Factor de carga
+ */
 float MediExpress::get_factor_carga() const {
     return idMedication.get_carga();
 }
 
+/**
+ * @brief Getter de redispersiones
+ * @return Numero de redispersiones
+ */
 int MediExpress::redispersiones() const {
     return idMedication.get_redisp();
 }
@@ -851,6 +876,12 @@ std::vector<Usuario*> MediExpress::buscar_Usu_Provincia(const std::string &nombr
     return arkham_resultado;
 }
 
+/**
+ * @brief El metodo busca las n farmacias mas cercanas a una posicion
+ * @param posicion Posicion sobre la que se busca las farmacias
+ * @param n Numero de farmacias
+ * @return El metodo busca las n farmacias mas cercanas a una dada
+ */
 std::vector<Farmacia*> MediExpress::buscarFarmacias(UTM posicion, int n) {
     std::vector<Farmacia *> arkham_resultado;
     arkham_resultado = grid.buscarCercana(posicion.get_longitud(), posicion.get_latitud(),n);

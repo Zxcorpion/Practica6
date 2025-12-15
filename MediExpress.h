@@ -68,6 +68,7 @@ public:
     //buscausuario(provincia)
 
     std::vector<Farmacia*> buscarFarmacias(UTM posicion, int n);
+    float distanciaFarmacia(Farmacia *farma);
 };
 
 #endif //MEDIEXPRESS_H
