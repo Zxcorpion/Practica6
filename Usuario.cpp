@@ -1,6 +1,13 @@
 #include  "MediExpress.h"
 #include "Usuario.h"
 
+/**
+ * @brief Constructor parametrizado y por defecto
+ * @param id int
+ * @param provincia std::string
+ * @param coord UTM
+ * @param linkUser MediExpress
+ */
 Usuario::Usuario(int id, std::string provincia, UTM coord, MediExpress *linkUser):
 id_(id),
 provincia_(provincia),
@@ -9,6 +16,10 @@ linkUser_(linkUser)
 
 {}
 
+/**
+ * @brief Constructor copia
+ * @param orig Usuario
+ */
 Usuario::Usuario(const Usuario &orig):
 id_(orig.id_),
 provincia_(orig.provincia_),
@@ -16,24 +27,47 @@ coord_(orig.coord_),
 linkUser_(orig.linkUser_)
 {}
 
+/**
+ * @brief Desctructor
+ */
 Usuario::~Usuario() {}
 
+/**
+ * @brief Funcion para leer la variable id_
+ * @return id_ int
+ */
 int Usuario::get_id() const {
     return id_;
 }
 
+/**
+ * @brief Funcion para establecer un valor a la variable id_
+ * @param id int
+ */
 void Usuario::set_id(int id) {
     id_ = id;
 }
 
+/**
+ * @brief Funcion para leer el valor de provincia_
+ * @return provincia_ std::string
+ */
 std::string Usuario::get_provincia() const {
     return provincia_;
 }
-
+/**
+ * @brief Funcion para establecer un valor a la variable provincia_
+ * @param provincia_ std::string
+ */
 void Usuario::set_provincia(const std::string &provincia) {
     provincia_ = provincia;
 }
 
+/**
+ * @brief Operador = de la clase Usuario
+ * @param orig const Usuario
+ * @return *this
+ */
 Usuario &Usuario::operator=(const Usuario &orig) {
     if (this != &orig) {
         id_ = orig.id_;
@@ -44,18 +78,38 @@ Usuario &Usuario::operator=(const Usuario &orig) {
     return *this;
 }
 
+/**
+ * @brief Funcion para obtener la coordenada X de un usuario
+ * @return float
+ */
 float Usuario::getX() const {
     return coord_.get_longitud();
 }
+/**
+ * @brief Funcion para obtener la coordenada Y de un usuario
+ * @return float
+ */
 float Usuario::getY() const {
     return coord_.get_latitud();
 }
 
+/**
+ * @brief Funcion para obtener las farmacias mas cercanas respecto un usuario
+ * @param num int
+ * @return std::vector<Farmacia*>
+ */
 std::vector<Farmacia *> Usuario::getFarmaciaCercanas(const int num) {
     std::vector<Farmacia *> arkham_origins;
      arkham_origins = linkUser_->buscarFarmacias(coord_,num);
     return arkham_origins;
 }
+
+/**
+ * @brief Metodo de procedimiento para comprar un medicamento. Leemos cuantos tipos de medicamentos tiene dicha farmacia
+ * @param nombre std::string
+ * @param farmacia Farmacia*
+ * @return std::vector<Pamedicamento *>
+ */
 std::vector<PaMedicamento *> Usuario::quieroMedicam(std::string nombre, Farmacia *farmacia) {
     //Vector que usaremos para meter los medicamentos de una farmacia
     std::vector<PaMedicamento *> arkham_origins;
@@ -63,6 +117,14 @@ std::vector<PaMedicamento *> Usuario::quieroMedicam(std::string nombre, Farmacia
     arkham_origins=farmacia->buscaMedicamNombre(nombre);
     return arkham_origins;
 }
+
+/**
+ * @brief Metodo para definitivamente comprar un medicamento de una farmacia
+ * @param num int
+ * @param paMed PaMedicamento*
+ * @param farmacia Farmacia*
+ * @return int numero de unidades compradas
+ */
 int Usuario::comprarMedicam(int num, PaMedicamento *paMed, Farmacia *farmacia) {
     //Comprobamos que haya suficientes guardando el stock en una variable
     int robin=farmacia->buscaMedicamID(paMed->get_id_num());
@@ -95,4 +157,3 @@ float Usuario::distanciaFarmacia(const float x1, const float y1) {
     float distancia = sqrt(pow(x_usuario-x1,2)+pow(y_usuario-y1,2));
     return distancia;
 }
-

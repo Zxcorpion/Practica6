@@ -14,7 +14,7 @@ private:
     std::string provincia_ = "";
     UTM coord_;
     MediExpress *linkUser_;
-    public:
+public:
     Usuario(int id = 0, std::string provincia = "", UTM coord = UTM(),MediExpress *linkUser=0);
     Usuario(const Usuario &orig);
     ~Usuario();
