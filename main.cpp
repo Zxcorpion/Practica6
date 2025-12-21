@@ -230,10 +230,14 @@ std::cout<<"\n";
         std::cout<< "El usuario mas cercano a la farmacia nueva tiene ID: " <<usu_compra->get_id()<<" que procede a comprar"<<std::endl;
         std::vector<PaMedicamento*> magnesitos= farma_nueva->buscaMedicamNombre("MAGNESIO OXIDO");
         std::cout<< "Stock inicial de la farmacia nueva de "<<magnesitos[0]->get_nombre()<<": "<< farma_nueva->buscaMedicamID(magnesitos[0]->get_id_num()) <<std::endl;
+        std::cout<< "Stock inicial de la farmacia nueva de "<<magnesitos[0]->get_nombre()<<": "<< farma_nueva->buscaMedicamID(magnesitos[0]->get_id_num()) <<std::endl;
         usu_compra->comprarMedicam(3,magnesitos[0],farma_nueva);
         std::cout<< "Stock final de la farmacia nueva de "<<magnesitos[0]->get_nombre()<<": "<< farma_nueva->buscaMedicamID(magnesitos[0]->get_id_num()) <<std::endl;
     }else {
         std::cout<<"No existe dicha farmacia"<<std::endl;
     }
+
+    //Ejercicio voluntario
+    medBatman.colorearImg();
     return 0;
 }

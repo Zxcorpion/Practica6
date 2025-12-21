@@ -887,3 +887,90 @@ std::vector<Farmacia*> MediExpress::buscarFarmacias(UTM posicion, int n) {
     arkham_resultado = grid.buscarCercana(posicion.get_longitud(), posicion.get_latitud(),n);
     return arkham_resultado;
 }
+
+
+void MediExpress::colorearImg() {
+    // creamos el fondo blanco y la imagen con ese
+    RGBColor blanco(255, 255, 255);
+    Img img(600, 600, blanco);
+
+    int nfilas = img.numFilas();
+    int ncol = img.numColumnas();
+
+    cout << "Imagen creada con " << nfilas << "filas y " << ncol << " columnas." <<endl;
+
+    int r = 0; // azul
+    int g = 0;
+    int b = 255;
+    int contadorFarmacias = 0;
+
+    // 2. Definición de los límites geográficos
+    double minlat = 27.0;   // Y mínima
+    double maxlat = 43.0;   // Y máxima
+    double minlon = -16.0;  // X mínima
+    double maxlon = 3.0;    // X máxima
+
+
+    // Calculamos el número de pixeles asociados a un grado
+
+    cout << "lat: ymin = " << minlat <<  ", " << "ymax = " << maxlat << endl;
+    cout << "lon: xmin = " << minlon <<  ", " << "xmax = " << maxlon << endl;
+
+    double rangoy = maxlat - minlat;
+    double rangox = maxlon - minlon;
+
+    cout << "rango x = " << rangox << endl;
+    cout << "rango y = " << rangoy << endl;
+
+    cout << "nfilas = " << nfilas << endl;
+    cout << "ncol = " << ncol << endl;
+
+    double pixelPorGradoX = (double)(nfilas - 1) / rangox;
+    double pixelPorGradoY = (double)(ncol - 1) / rangoy;
+
+
+    multimap<string, Farmacia>::iterator it;
+    for (it = pharmacy.begin(); it != pharmacy.end(); it++) {
+        // X es Longitud, Y es Latitud
+        double valLon = it->second.getX();
+        double valLat = it->second.getY();
+
+        int posY = nfilas - 1 - (int)((valLat - minlat) * pixelPorGradoY);
+        int posX = (int)((valLon - minlon) * pixelPorGradoX);
+
+        // Restamos 1 al límite superior porque pintarPixelGrande usa x+1 y y+1
+        if (posX >= 0 && posX < 600 - 1 && posY >= 0 && posY < 600 - 1) {
+            img.pintarPixelGrande(posX, posY, r, g, b);
+            contadorFarmacias++;
+        }
+    }
+    std::cout << "Farmacias dibujadas: " << contadorFarmacias << std::endl;
+
+    // --- PINTAR USUARIOS (ROJO) ---
+    r = 255; g = 0; b = 0;
+    int contadorUsuarios = 0;
+
+    map<int, Usuario>::iterator itu;
+    for (itu = users.begin(); itu != users.end(); itu++) {
+        double valLon = itu->second.getX();
+        double valLat = itu->second.getY();
+
+        int posX = (int)((valLon - minlon) * pixelPorGradoX);
+        int posY = nfilas - 1 - (int)((valLat - minlat) * pixelPorGradoY);
+
+        // Protección de bordes
+        if (posX >= 0 && posX < 600 - 1 && posY >= 0 && posY < 600 - 1) {
+            img.pintarPixelGrande(posX, posY, r, g, b);
+            contadorUsuarios++;
+        }
+    }
+    std::cout << "Usuarios dibujados: " << contadorUsuarios << std::endl;
+
+    try {
+        img.guardar("../imagen.ppm");
+        std::cout << "Imagen guardada correctamente: " << std::endl;
+    }
+    catch(ErrorEscrituraFichero &e) {
+        std::cout << "Error fatal al escribir fichero." << std::endl;
+    }
+}
